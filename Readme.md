@@ -1,4 +1,4 @@
-# Phoenix Reisen API Modul
+# Phoenix Reisen Formular Modul
 
 Wiederverwendbarer Stuff zum vereinfachten Handling reaktiver Formulare - instant Validierung für verschiedene Feldtypen, Validierung für gesamtes Formular, Prüfung auf Browser-Support für Datepicker, und anderes.
 
