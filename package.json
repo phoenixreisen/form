@@ -1,0 +1,24 @@
+{
+  "name": "@phoenixreisen/form",
+  "version": "0.0.1",
+  "description": "Wiederverwendbarer Stuff für reaktives Formularhandling",
+  "main": "src/form.js",
+  "scripts": {
+    "minify": "npx uglifyjs ./src/form.min.js -o ./src/form.min.js",
+    "compile": "npx babel ./src/form.js --presets @babel/preset-env -o ./src/form.min.js",
+    "prepublish": "npm run compile && npm run minify"
+  },
+  "homepage": "https://www.phoenixreisen.com",
+  "author": "Phoenix Reisen <it@phoenixreisen.com>",
+  "contributors": [
+    "Fabian Marcus <f.marcus@phoenixreisen.com>"
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-es2015": "^7.0.0-beta.53",
+    "uglify-js": "^3.6.0"
+  }
+}
