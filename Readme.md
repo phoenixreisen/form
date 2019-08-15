@@ -28,7 +28,7 @@ Funktionen importieren
 import { isValidInput, isDateSupported } from '@phoenixreisen/form';
 ```
 
-Formular deklarieren
+Formular deklarieren:
 (Parameter-Signatur der einzelnen Felder beachten)
 
 ```js
@@ -39,6 +39,8 @@ const form = {
     bookingnr: bookingnr()  // Validierung auf gültige Buchungsnr.
 };
 ```
+
+Form-Feld an ein bestimmtes HTML-Feld binden:
 
 ```html
 <input 
@@ -55,7 +57,7 @@ const form = {
 }
 ```
 
-Bei Submit alles validieren lassen
+Bei Submit alles validieren lassen:
 
 ```js
 function submit(form) {
