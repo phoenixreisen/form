@@ -10,19 +10,19 @@ npm install --save @phoenixreisen/form
 
 ## Anwendung (Beispiel)
 
-Bestimmte Felder importieren
+Bestimmte Felder importieren:
 
 ```js
 import { text, int, email, bookingnr } from '@phoenixreisen/form';
 ```
 
-Alle Felder importieren
+Alle Felder importieren:
 
 ```js
 import fields from '@phoenixreisen/form';
 ```
 
-Funktionen importieren
+Funktionen importieren:
 
 ```js
 import { isValidInput, isDateSupported } from '@phoenixreisen/form';
