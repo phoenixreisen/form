@@ -55,7 +55,7 @@ const text = (required = true, hook = undefined) => {
             } else {
                 text.complaint = false;
             }
-            if(hook) hook.call(this, input);
+            hook && hook.call(this, input);
             text.value(input);
         },
     };
@@ -75,7 +75,7 @@ const int = (required = true, hook = undefined) => {
             } else {
                 int.complaint = false;
             }
-            if(hook) hook.call(this, input);
+            hook && hook.call(this, input);
             int.value(input);
         },
     };
@@ -99,7 +99,7 @@ const email = (required = true, hook = undefined) => {
             } else {
                 email.complaint = false;
             }
-            if(hook) hook.call(this, input);
+            hook && hook.call(this, input);
             email.value(input);
         },
     };
@@ -120,7 +120,7 @@ const date = (required = true, hook = undefined) => {
             } else {
                 date.complaint = false;
             }
-            if(hook) hook.call(this, input);
+            hook && hook.call(this, input);
             date.value(input);
         },
         getDate: () => {
@@ -182,7 +182,7 @@ const nativeDate = (required = true, daterange = undefined, hook = undefined) =>
     return date;
 };
 
-const time = (required = true) => {
+const time = (required = true, hook = undefined) => {
     const time = {
         value: Stream(''),
         complaint: false,
@@ -195,13 +195,14 @@ const time = (required = true) => {
             } else {
                 time.complaint = false;
             }
+            hook && hook.call(this, input);
             time.value(input);
         },
     };
     return time;
 };
 
-const gender = (required = true) => {
+const gender = (required = true, hook = undefined) => {
     const gender = {
         value: Stream(''),
         complaint: false,
@@ -218,13 +219,14 @@ const gender = (required = true) => {
             }  else {
                 gender.complaint = false;
             }
+            hook && hook.call(this, input);
             gender.value(input);
         },
     };
     return gender;
 };
 
-const phone = (required = true) => {
+const phone = (required = true, hook = undefined) => {
     const phone = {
         value: Stream(''),
         complaint: false,
@@ -237,6 +239,7 @@ const phone = (required = true) => {
             } else {
                 phone.complaint = false;
             }
+            hook && hook.call(this, input);
             phone.value(input);
         },
     };
@@ -250,7 +253,7 @@ const radio = (required = true, hook = undefined) => {
         required: required,
         validate: (input) => {
             radio.complaint = (input === null && radio.required);
-            if(hook) hook.call(this, input);
+            hook && hook.call(this, input);
             radio.value(input);
         },
     };
@@ -265,7 +268,7 @@ const checkbox = (required = true, hook = undefined) => {
         validate: (input) => {
             const checked = input ? true : false;
             checkbox.complaint = (!checked && checkbox.required);
-            if(hook) hook.call(this, input);
+            hook && hook.call(this, input);
             checkbox.value(checked);
         },
     };
@@ -284,14 +287,14 @@ const bookingnr = (required = true, hook = undefined) => {
                 || !isInt(input)
                 || (input.length !== 6)
             );
-            if(hook) hook.call(this, input);
+            hook && hook.call(this, input);
             bookingnr.value(input);
         },
     };
     return bookingnr;
 };
 
-const agencyid = (required = true) => {
+const agencyid = (required = true, hook = undefined) => {
     const agencyid = {
         value: Stream(''),
         complaint: false,
@@ -303,6 +306,7 @@ const agencyid = (required = true) => {
                 || isEmpty(input) 
                 || input.length !== 6
             );
+            hook && hook.call(this, input);
             agencyid.value(input);
         },
     };
@@ -322,7 +326,7 @@ const iban = (required = true, hook = undefined) => {
             else if(input && !isIban.isValid(input)) {
                 iban.complaint = ValidationTypes.invalid;
             }
-            if(hook) hook.call(this, input);
+            hook && hook.call(this, input);
             iban.value(input);
         },
     };
