@@ -1,6 +1,0 @@
-src/form.min.js
-
-.hg/
-.git/
-tests/
-node_modules/

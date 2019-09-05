@@ -33,10 +33,14 @@ Formular deklarieren:
 
 ```js
 const form = {
-    prename: text(),        // Text
-    surname: text(),        // Text
-    age: int(false),        // optionales Feld, Int Validierung
-    bookingnr: bookingnr()  // Validierung auf gültige Buchungsnr.
+    prename: text(true, input => {    // Text
+        console.log('hooked')
+        input = parseInt(input, 10);
+        return input;
+    }),
+    surname: text(),                    // Text
+    age: int(false),                    // optionales Feld, Int Validierung
+    bookingnr: bookingnr()              // Validierung auf gültige Buchungsnr.
 };
 ```
 
@@ -65,6 +69,7 @@ function submit(form) {
         // bei invaliden Feldern wurde property "complaint" auf true gesetzt.
         return;
     }
+    // code...
 }
 ```
 

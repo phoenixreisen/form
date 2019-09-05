@@ -6,6 +6,9 @@ import isInt from 'validator/lib/isInt';
 import isEmpty from 'validator/lib/isEmpty';
 import isNumeric from 'validator/lib/isNumeric';
 
+require('date-and-time/locale/de');
+DateTime.locale('de');
+
 const DateConfig = {
     patterns: {
         de: 'DD.MM.YYYY',
@@ -55,7 +58,9 @@ const text = (required = true, hook = undefined) => {
             } else {
                 text.complaint = false;
             }
-            hook && hook.call(this, input);
+            input = hook 
+                ? hook.call(this, input) 
+                : input;
             text.value(input);
         },
     };
@@ -75,7 +80,9 @@ const int = (required = true, hook = undefined) => {
             } else {
                 int.complaint = false;
             }
-            hook && hook.call(this, input);
+            input = hook 
+                ? hook.call(this, input) 
+                : input;
             int.value(input);
         },
     };
@@ -99,7 +106,9 @@ const email = (required = true, hook = undefined) => {
             } else {
                 email.complaint = false;
             }
-            hook && hook.call(this, input);
+            input = hook 
+                ? hook.call(this, input) 
+                : input;
             email.value(input);
         },
     };
@@ -120,7 +129,9 @@ const date = (required = true, hook = undefined) => {
             } else {
                 date.complaint = false;
             }
-            hook && hook.call(this, input);
+            input = hook 
+                ? hook.call(this, input) 
+                : input;
             date.value(input);
         },
         getDate: () => {
@@ -147,10 +158,11 @@ const nativeDate = (required = true, daterange = undefined, hook = undefined) =>
             const { patterns } = DateConfig;
 
             date.complaint = '';
-            if(!datestring || !datestring.length) {
+            if((!datestring || !datestring.length) && date.required) {
                 date.complaint = 'empty';
             }
-            else if((!isValid(datestring, patterns.de) || datestring.length < patterns.de.length)
+            else if((datestring) 
+            && (!isValid(datestring, patterns.de) || datestring.length < patterns.de.length)
             && (!isValid(datestring, patterns.en) || datestring.length < patterns.en.length)) {
                 date.complaint = 'invalid';
             }
@@ -163,9 +175,9 @@ const nativeDate = (required = true, daterange = undefined, hook = undefined) =>
                     date.complaint = 'out-of-range';
                 }
             }
-            if(hook) {
-                hook.call(this, datestring);
-            }
+            datestring = hook 
+                ? hook.call(this, datestring) 
+                : datestring;
             date.value(datestring);
         },
         getDate: () => {
@@ -195,7 +207,9 @@ const time = (required = true, hook = undefined) => {
             } else {
                 time.complaint = false;
             }
-            hook && hook.call(this, input);
+            input = hook 
+                ? hook.call(this, input) 
+                : input;
             time.value(input);
         },
     };
@@ -219,7 +233,9 @@ const gender = (required = true, hook = undefined) => {
             }  else {
                 gender.complaint = false;
             }
-            hook && hook.call(this, input);
+            input = hook 
+                ? hook.call(this, input) 
+                : input;
             gender.value(input);
         },
     };
@@ -239,7 +255,9 @@ const phone = (required = true, hook = undefined) => {
             } else {
                 phone.complaint = false;
             }
-            hook && hook.call(this, input);
+            input = hook 
+                ? hook.call(this, input) 
+                : input;
             phone.value(input);
         },
     };
@@ -253,7 +271,9 @@ const radio = (required = true, hook = undefined) => {
         required: required,
         validate: (input) => {
             radio.complaint = (input === null && radio.required);
-            hook && hook.call(this, input);
+            input = hook 
+                ? hook.call(this, input) 
+                : input;
             radio.value(input);
         },
     };
@@ -268,7 +288,9 @@ const checkbox = (required = true, hook = undefined) => {
         validate: (input) => {
             const checked = input ? true : false;
             checkbox.complaint = (!checked && checkbox.required);
-            hook && hook.call(this, input);
+            input = hook 
+                ? hook.call(this, input) 
+                : input;
             checkbox.value(checked);
         },
     };
@@ -278,16 +300,17 @@ const checkbox = (required = true, hook = undefined) => {
 const bookingnr = (required = true, hook = undefined) => {
     const bookingnr = {
         value: Stream(''),
-        invalid: false,
+        complaint: false,
         required: required,
         validate: input => {
-            bookingnr.invalid = (
-                !input
-                || isEmpty(input) 
-                || !isInt(input)
-                || (input.length !== 6)
-            );
-            hook && hook.call(this, input);
+            bookingnr.complaint = ((!input || isEmpty(input)) && bookingnr.required)
+                ? ValidationTypes.empty
+                : (input && (!isInt(input) || input.length !== 6))
+                    ? ValidationTypes.invalid
+                    : false;
+            input = hook 
+                ? hook.call(this, input) 
+                : input;
             bookingnr.value(input);
         },
     };
@@ -306,7 +329,9 @@ const agencyid = (required = true, hook = undefined) => {
                 || isEmpty(input) 
                 || input.length !== 6
             );
-            hook && hook.call(this, input);
+            input = hook 
+                ? hook.call(this, input) 
+                : input;
             agencyid.value(input);
         },
     };
@@ -326,7 +351,9 @@ const iban = (required = true, hook = undefined) => {
             else if(input && !isIban.isValid(input)) {
                 iban.complaint = ValidationTypes.invalid;
             }
-            hook && hook.call(this, input);
+            input = hook 
+                ? hook.call(this, input) 
+                : input;
             iban.value(input);
         },
     };
@@ -374,7 +401,7 @@ function isValidInput(fields) {
     for(let i=0; i < fieldnames.length; i+=1) {
         const field = fields[fieldnames[i]];
         field.validate(field.value());
-        hasErrors = (field.complaint || hasErrors);
+        hasErrors = field.complaint ? true:hasErrors;
     }
     return !hasErrors;
 }
