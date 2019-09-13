@@ -9,6 +9,10 @@ import isNumeric from 'validator/lib/isNumeric';
 require('date-and-time/locale/de');
 DateTime.locale('de');
 
+// ---
+// ENUMS & KONFIG
+// ---
+
 const DateConfig = {
     patterns: {
         de: 'DD.MM.YYYY',
@@ -58,9 +62,7 @@ const text = (required = true, hook = undefined) => {
             } else {
                 text.complaint = false;
             }
-            input = hook 
-                ? hook.call(this, input) 
-                : input;
+            input = (hook && hook(input, text)) || input;
             text.value(input);
         },
     };
@@ -80,9 +82,7 @@ const int = (required = true, hook = undefined) => {
             } else {
                 int.complaint = false;
             }
-            input = hook 
-                ? hook.call(this, input) 
-                : input;
+            input = (hook && hook(input, int)) || input;
             int.value(input);
         },
     };
@@ -106,9 +106,7 @@ const email = (required = true, hook = undefined) => {
             } else {
                 email.complaint = false;
             }
-            input = hook 
-                ? hook.call(this, input) 
-                : input;
+            input = (hook && hook(input, email)) || input;
             email.value(input);
         },
     };
@@ -129,9 +127,7 @@ const date = (required = true, hook = undefined) => {
             } else {
                 date.complaint = false;
             }
-            input = hook 
-                ? hook.call(this, input) 
-                : input;
+            input = (hook && hook(input, date)) || input;
             date.value(input);
         },
         getDate: () => {
@@ -170,14 +166,12 @@ const nativeDate = (required = true, daterange = undefined, hook = undefined) =>
                 const inputdate = isNaN(parse(datestring, patterns.de))
                     ? parse(datestring, patterns.en)
                     : parse(datestring, patterns.de);
-                
-                if(range && (range[0] && (inputdate < range[0]) || (range[1] && inputdate > range[1]))) {
+                if(range && (range[0] && (inputdate < range[0]) 
+                || (range[1] && inputdate > range[1]))) {
                     date.complaint = 'out-of-range';
                 }
             }
-            datestring = hook 
-                ? hook.call(this, datestring) 
-                : datestring;
+            datestring = (hook && hook(datestring, range, date)) || datestring;
             date.value(datestring);
         },
         getDate: () => {
@@ -207,9 +201,7 @@ const time = (required = true, hook = undefined) => {
             } else {
                 time.complaint = false;
             }
-            input = hook 
-                ? hook.call(this, input) 
-                : input;
+            input = (hook && hook(input, time)) || input;
             time.value(input);
         },
     };
@@ -233,9 +225,7 @@ const gender = (required = true, hook = undefined) => {
             }  else {
                 gender.complaint = false;
             }
-            input = hook 
-                ? hook.call(this, input) 
-                : input;
+            input = (hook && hook(input, gender)) || input;
             gender.value(input);
         },
     };
@@ -255,9 +245,7 @@ const phone = (required = true, hook = undefined) => {
             } else {
                 phone.complaint = false;
             }
-            input = hook 
-                ? hook.call(this, input) 
-                : input;
+            input = (hook && hook(input, phone)) || input;
             phone.value(input);
         },
     };
@@ -271,9 +259,7 @@ const radio = (required = true, hook = undefined) => {
         required: required,
         validate: (input) => {
             radio.complaint = (input === null && radio.required);
-            input = hook 
-                ? hook.call(this, input) 
-                : input;
+            input = (hook && hook(input, radio)) || input;
             radio.value(input);
         },
     };
@@ -288,9 +274,7 @@ const checkbox = (required = true, hook = undefined) => {
         validate: (input) => {
             const checked = input ? true : false;
             checkbox.complaint = (!checked && checkbox.required);
-            input = hook 
-                ? hook.call(this, input) 
-                : input;
+            input = (hook && hook(input, checkbox)) || input;
             checkbox.value(checked);
         },
     };
@@ -302,15 +286,13 @@ const bookingnr = (required = true, hook = undefined) => {
         value: Stream(''),
         complaint: false,
         required: required,
-        validate: input => {
+        validate: (input) => {
             bookingnr.complaint = ((!input || isEmpty(input)) && bookingnr.required)
                 ? ValidationTypes.empty
                 : (input && (!isInt(input) || input.length !== 6))
                     ? ValidationTypes.invalid
                     : false;
-            input = hook 
-                ? hook.call(this, input) 
-                : input;
+            input = (hook && hook(input, bookingnr)) || input;
             bookingnr.value(input);
         },
     };
@@ -329,9 +311,7 @@ const agencyid = (required = true, hook = undefined) => {
                 || isEmpty(input) 
                 || input.length !== 6
             );
-            input = hook 
-                ? hook.call(this, input) 
-                : input;
+            input = (hook && hook(input, agencyid)) || input;
             agencyid.value(input);
         },
     };
@@ -343,7 +323,7 @@ const iban = (required = true, hook = undefined) => {
         value: Stream(''),
         complaint: false,
         required: required,
-        validate: (input) => {
+        validate: input => {
             iban.complaint = false;
             if(iban.required && (!input || isEmpty(input))) {
                 iban.complaint = ValidationTypes.empty;
@@ -351,10 +331,25 @@ const iban = (required = true, hook = undefined) => {
             else if(input && !isIban.isValid(input)) {
                 iban.complaint = ValidationTypes.invalid;
             }
-            input = hook 
-                ? hook.call(this, input) 
-                : input;
+            input = (hook && hook(input, iban)) || input;
             iban.value(input);
+        },
+        format: e => {
+            const target = e.target; 
+            const length = target.value.length;
+            let position = target.selectionEnd;
+            iban.complaint = false;
+            target.value = target.value
+                .replace(/[^\dA-Z]/g, '')
+                .replace(/(.{4})/g, '$1 ')
+                .trim();
+            target.selectionEnd = position += ((
+                target.value.charAt(position - 1) === ' ' 
+                && target.value.charAt(length - 1) === ' ' 
+                && length !== target.value.length) 
+                ? 1 : 0
+            );
+            iban.validate(target.value);
         },
     };
     return iban;
@@ -367,7 +362,6 @@ const fields = {
     phone, gender, email,
     agencyid, bookingnr,
 };
-
 
 // ---
 // FUNKTIONEN
@@ -419,6 +413,9 @@ function isDateSupported() {
     return (input.value !== value);
 }
 
+// ---
+// EXPORT
+// ---
 
 export {
     fields,
