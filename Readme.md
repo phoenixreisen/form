@@ -19,7 +19,6 @@ import { DateConfig, ValidationTypes, UserTypes } from '@phoenixreisen/form';
 Felder importieren:
 
 ```js
-// nur bestimmte Felder
 import { text, int, email, bookingnr } from '@phoenixreisen/form';
 ```
 
