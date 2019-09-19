@@ -25,6 +25,7 @@ describe("form handler - types & config", () => {
         expect(UserTypes.phoenix).toBeDefined();
         expect(UserTypes.agency).toBeDefined();
     });
+
     it('should provide certain ValidationTypes', () => {
         const { ValidationTypes } = form;
         const keys = Object.keys(ValidationTypes);
@@ -34,6 +35,7 @@ describe("form handler - types & config", () => {
         expect(ValidationTypes.invalid).toBeDefined();
         expect(ValidationTypes.empty).toBeDefined();
     });
+
     it('should provide certain date patterns', () => {
         const { DateConfig } = form;
         expect(DateConfig.patterns.de).toBeDefined();
@@ -53,6 +55,7 @@ describe("form handler - functions", () => {
         expect(isDateSupported).toBeDefined();
         expect(isValidInput).toBeDefined();
     });
+
     it('should give the correct btn status class', () => {
         const error = { failure: true, details: 'bla'};
         const { getBtnStatusClass } = form;
@@ -63,13 +66,15 @@ describe("form handler - functions", () => {
         expect(btnClass).toBe('btn--success');
         btnClass = getBtnStatusClass(false, error);
         expect(btnClass).toBe('btn--danger');
-    })
+    });
+
     it('should tell if native datepicker is supported', () => {
         // jsdom unterstützt Felder vom Typ "date".
         const { isDateSupported } = form;
         const isSupported = isDateSupported();
         expect(isSupported).toBeTruthy();
     });
+    
     it('should fire & check the fields validation correctly', () => {
         const { int, text, isValidInput } = form;
         let isValid = false;
