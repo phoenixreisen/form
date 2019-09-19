@@ -30,7 +30,7 @@ import { isValidInput, isDateSupported } from '@phoenixreisen/form';
 ```
 
 Formular deklarieren:
-(Parameter-Signatur der einzelnen Felder beachten, weitere Beispiele in Ordner `tests`)
+(Parameter-Signatur der einzelnen Felder beachten, weitere Beispiele in Ordner `spec`)
 
 ```js
 const form = {
