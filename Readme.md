@@ -10,16 +10,17 @@ npm install --save @phoenixreisen/form
 
 ## Anwendung (Beispiel)
 
-Bestimmte Felder importieren:
+Konfig & Types importieren:
 
 ```js
-import { text, int, email, bookingnr } from '@phoenixreisen/form';
+import { DateConfig, ValidationTypes, UserTypes } from '@phoenixreisen/form';
 ```
 
-Alle Felder importieren:
+Felder importieren:
 
 ```js
-import fields from '@phoenixreisen/form';
+// nur bestimmte Felder
+import { text, int, email, bookingnr } from '@phoenixreisen/form';
 ```
 
 Funktionen importieren:
@@ -29,13 +30,13 @@ import { isValidInput, isDateSupported } from '@phoenixreisen/form';
 ```
 
 Formular deklarieren:
-(Parameter-Signatur der einzelnen Felder beachten)
+(Parameter-Signatur der einzelnen Felder beachten, weitere Beispiele in Ordner `tests`)
 
 ```js
 const form = {
-    prename: text(true, input => {    // Text
+    prename: text(true, input => {      // Text
         console.log('hooked')
-        input = parseInt(input, 10);
+        input = input.trim();
         return input;
     }),
     surname: text(),                    // Text
@@ -53,10 +54,9 @@ Form-Feld an ein bestimmtes HTML-Feld binden:
     value={form.surname.value()}
     oninput={e => form.surname.validate(e.target.value)}
 />
-
-{form.surname.complaint &&
+{form.surname.complaint && form.surname.complaint === ValidationTypes.empty ?
     <div class="alert alert--warning">
-        Bitte richtig ausfüllen
+        Bitte ausfüllen
     </div>
 }
 ```
@@ -66,7 +66,8 @@ Bei Submit alles validieren lassen:
 ```js
 function submit(form) {
     if(!Form.isValidInput(form)) {
-        // bei invaliden Feldern wurde property "complaint" auf true gesetzt.
+        // bei invaliden Feldern wurde property "complaint" 
+        // auf true oder einen der ValidationTypes (string) gesetzt.
         return;
     }
     // code...
@@ -77,10 +78,7 @@ function submit(form) {
 ## Deployment
 
 ```bash
-
 npm version [major|minor|patch]     # increase version x.x.x => major.minor.patch
 npm publish                         # upload to npm
-
-hg bzw. git commit package.json package-lock.json -m "(npm) Neue Version"
-hg bzw. git push
+git push
 ```

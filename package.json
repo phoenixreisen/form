@@ -6,23 +6,36 @@
   "scripts": {
     "minify": "npx uglifyjs ./src/form.min.js -o ./src/form.min.js",
     "compile": "npx babel ./src/form.js --presets @babel/preset-env -o ./src/form.min.js",
-    "prepublish": "npm run compile && npm run minify"
+    "prepublish": "npm run compile && npm run minify",
+    "pretest": "babel src --out-dir test",
+    "test": "jasmine",
+    "posttest": "del-cli test"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/phoenixreisen/form.git"
   },
-  "homepage": "https://www.phoenixreisen.com",
   "author": "Phoenix Reisen <it@phoenixreisen.com>",
   "contributors": [
     "Fabian Marcus <f.marcus@phoenixreisen.com>"
   ],
-  "license": "ISC",
+  "license": "MIT",
+  "homepage": "https://github.com/phoenixreisen/form#readme",
+  "dependencies": {
+    "date-and-time": "^0.10.0",
+    "iban": "0.0.12",
+    "mithril": "^2.0.4",
+    "validator": "^11.1.0"
+  },
   "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-es2015": "^7.0.0-beta.53",
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "del-cli": "^3.0.0",
+    "jasmine": "^3.4.0",
+    "jasmine-local-storage": "^1.1.1",
+    "jsdom": "^15.1.1",
     "uglify-js": "^3.6.0"
   }
 }
