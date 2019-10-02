@@ -20,7 +20,7 @@
     "Fabian Marcus <f.marcus@phoenixreisen.com>"
   ],
   "license": "MIT",
-  "homepage": "https://design-system.phoenixreisen.com",
+  "homepage": "https://design-system.phoenixreisen.net",
   "dependencies": {
     "date-and-time": "^0.10.0",
     "iban": "0.0.12",
