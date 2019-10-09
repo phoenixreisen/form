@@ -35,7 +35,10 @@ const text = (required = true, hook = undefined) => {
             } else {
                 text.complaint = false;
             }
-            input = (hook && hook(input, text)) || input;
+            const hooked = (hook && hook(input, text));
+            input = (hooked !== null && hooked !== undefined)
+                ? hooked
+                : input;
             text.value(input);
         },
     };
@@ -55,7 +58,10 @@ const int = (required = true, hook = undefined) => {
             } else {
                 int.complaint = false;
             }
-            input = (hook && hook(input, int)) || input;
+            const hooked = (hook && hook(input, int));
+            input = (hooked !== null && hooked !== undefined)
+                ? hooked
+                : input;
             int.value(input);
         },
     };
@@ -79,7 +85,10 @@ const email = (required = true, hook = undefined) => {
             } else {
                 email.complaint = false;
             }
-            input = (hook && hook(input, email)) || input;
+            const hooked = (hook && hook(input, email));
+            input = (hooked !== null && hooked !== undefined)
+                ? hooked
+                : input;
             email.value(input);
         },
     };
@@ -100,7 +109,10 @@ const date = (required = true, hook = undefined) => {
             } else {
                 date.complaint = false;
             }
-            input = (hook && hook(input, date)) || input;
+            const hooked = (hook && hook(input, date));
+            input = (hooked !== null && hooked !== undefined)
+                ? hooked
+                : input;
             date.value(input);
         },
         getDate: () => {
@@ -144,7 +156,10 @@ const nativeDate = (required = true, daterange = undefined, hook = undefined) =>
                     date.complaint = ValidationTypes.outOfRange;
                 }
             }
-            datestring = (hook && hook(datestring, range, date)) || datestring;
+            const hooked = (hook && hook(datestring, range, date));
+            datestring = (hooked !== null && hooked !== undefined)
+                ? hooked
+                : datestring;
             date.value(datestring);
         },
         getDate: () => {
@@ -174,7 +189,10 @@ const time = (required = true, hook = undefined) => {
             } else {
                 time.complaint = false;
             }
-            input = (hook && hook(input, time)) || input;
+            const hooked = (hook && hook(input, time));
+            input = (hooked !== null && hooked !== undefined)
+                ? hooked
+                : input;
             time.value(input);
         },
     };
@@ -199,7 +217,10 @@ const gender = (required = true, hook = undefined) => {
             }  else {
                 gender.complaint = false;
             }
-            input = (hook && hook(input, gender)) || input;
+            const hooked = (hook && hook(input, gender));
+            input = (hooked !== null && hooked !== undefined)
+                ? hooked
+                : input;
             gender.value(input);
         },
     };
@@ -219,7 +240,10 @@ const phone = (required = true, hook = undefined) => {
             } else {
                 phone.complaint = false;
             }
-            input = (hook && hook(input, phone)) || input;
+            const hooked = (hook && hook(input, phone));
+            input = (hooked !== null && hooked !== undefined)
+                ? hooked
+                : input;
             phone.value(input);
         },
     };
@@ -233,7 +257,10 @@ const radio = (required = true, hook = undefined) => {
         required: required,
         validate: (input) => {
             radio.complaint = (input === null && radio.required);
-            input = (hook && hook(input, radio)) || input;
+            const hooked = (hook && hook(input, radio));
+            input = (hooked !== null && hooked !== undefined)
+                ? hooked
+                : input;
             radio.value(input);
         },
     };
@@ -248,7 +275,10 @@ const checkbox = (required = true, hook = undefined) => {
         validate: (input) => {
             const checked = input ? true : false;
             checkbox.complaint = (!checked && checkbox.required);
-            input = (hook && hook(input, checkbox)) || input;
+            const hooked = (hook && hook(input, checkbox));
+            input = (hooked !== null && hooked !== undefined)
+                ? hooked
+                : input;
             checkbox.value(checked);
         },
     };
@@ -266,7 +296,11 @@ const bookingnr = (required = true, hook = undefined) => {
                 : (input && (!isInt(input) || input.length !== 6))
                     ? ValidationTypes.invalid
                     : false;
-            input = (hook && hook(input, bookingnr)) || input;
+            
+            const hooked = (hook && hook(input, bookingnr));
+            input = (hooked !== null && hooked !== undefined)
+                ? hooked
+                : input;
             bookingnr.value(input);
         },
     };
@@ -284,7 +318,11 @@ const agencyid = (required = true, hook = undefined) => {
                 : (input && (!isInt(input) || input.length !== 6))
                     ? ValidationTypes.invalid
                     : false;
-            input = (hook && hook(input, agencyid)) || input;
+            
+            const hooked = (hook && hook(input, agencyid));
+            input = (hooked !== null && hooked !== undefined)
+                ? hooked
+                : input;
             agencyid.value(input);
         },
     };
@@ -304,7 +342,10 @@ const iban = (required = true, hook = undefined) => {
             else if(input && !isIban.isValid(input)) {
                 iban.complaint = ValidationTypes.invalid;
             }
-            input = (hook && hook(input, iban)) || input;
+            const hooked = (hook && hook(input, iban));
+            input = (hooked !== null && hooked !== undefined)
+                ? hooked
+                : input;
             iban.value(input);
         },
         format: e => {
