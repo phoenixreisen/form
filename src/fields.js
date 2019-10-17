@@ -1,5 +1,5 @@
 import { ValidationTypes, DateConfig } from './config';
-import isNumeric from 'validator/lib/isNumeric';
+import isEmail from 'validator/lib/isEmail';
 import isEmpty from 'validator/lib/isEmpty';
 import isInt from 'validator/lib/isInt';
 import DateTime from 'date-and-time';
@@ -78,7 +78,7 @@ const email = (required = true, hook = undefined) => {
             const { mirror } = email;
             if((!input || isEmpty(input)) && email.required) {
                 email.complaint = ValidationTypes.empty;
-            } else if(isNumeric(input)) {
+            } else if(!isEmpty(input) && !isEmail(input)) {
                 email.complaint = ValidationTypes.invalid;
             } else if(mirror && mirror.value() !== input) {
                 email.complaint = ValidationTypes.notequal;

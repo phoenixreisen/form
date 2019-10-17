@@ -255,6 +255,20 @@ describe("form handler - field check", () => {
         field.validate('f.marcus@phoenixreisen.com');
         expect(field.complaint).toBe(false);
 
+        // --- Email-Syntax-Check (Validator isEmail())
+        const invalides = [
+            'fab,mar@phoenix.de', 
+            'fabian@phoenix,com', 
+            'fabian.com', 
+            'fabian@phoenix-com',
+            'fabian@phoenix',
+        ];
+        for(const value of invalides) {
+            field2.validate(value);
+            expect(field2.value()).toBe(value);
+            expect(field2.complaint).toBe(ValidationTypes.invalid);
+        }
+        
         // --- Pflichtprüfung
         field2.validate('');
         expect(field2.complaint).toBe(false);
