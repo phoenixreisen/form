@@ -208,11 +208,13 @@ const gender = (required = true, hook = undefined) => {
             if((!input || isEmpty(input)) && gender.required) {
                 gender.complaint = ValidationTypes.empty;
             } else if(input.length &&
-                input !== 'maenlich' && 
-                input !== 'maennlich' && 
-                input !== 'weiblich' &&
-                input !== 'divers'
-            ) {
+                input.toLowerCase() !== 'herr' &&
+                input.toLowerCase() !== 'frau' &&
+                input.toLowerCase() !== 'maenlich' && 
+                input.toLowerCase() !== 'maennlich' && 
+                input.toLowerCase() !== 'weiblich' &&
+                input.toLowerCase() !== 'divers') 
+            {
                 gender.complaint = ValidationTypes.invalid;
             }  else {
                 gender.complaint = false;
