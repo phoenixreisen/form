@@ -6,7 +6,7 @@
   "scripts": {
     "minify": "npx uglifyjs ./src/form.min.js -o ./src/form.min.js",
     "compile": "npx babel ./src/form.js --presets @babel/preset-env -o ./src/form.min.js",
-    "prepublish": "npm run compile && npm run minify",
+    "prepublish": "npm run compile && npm run minify && npm test",
     "pretest": "babel src --out-dir test",
     "test": "jasmine",
     "posttest": "del-cli test"
