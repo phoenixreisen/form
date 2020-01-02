@@ -6,21 +6,14 @@ import DateTime from 'date-and-time';
 import Stream from 'mithril/stream';
 import isIban from 'iban';
 
-export {
-    bookingnr, agencyid,
-    gender, phone, email,
-    text, int, date, nativeDate,
-    time, radio, checkbox, iban
-};
-
-// INIT ------------------------------------------------------
+//--- INIT -----
 
 require('date-and-time/locale/de');
 DateTime.locale('de');
 
-// FELDER ----------------------------------------------------
+//--- FELDER -----
 
-const text = (required = true, hook = undefined) => {
+export const text = (required = true, hook = undefined) => {
     const text = {
         value: Stream(''),
         complaint: false,
@@ -45,7 +38,7 @@ const text = (required = true, hook = undefined) => {
     return text;
 };
 
-const int = (required = true, hook = undefined) => {
+export const int = (required = true, hook = undefined) => {
     const int = {
         value: Stream(null),
         complaint: false,
@@ -68,7 +61,7 @@ const int = (required = true, hook = undefined) => {
     return int;
 };
 
-const email = (required = true, hook = undefined) => {
+export const email = (required = true, hook = undefined) => {
     const email = {
         value: Stream(''),
         complaint: false,
@@ -95,7 +88,7 @@ const email = (required = true, hook = undefined) => {
     return email;
 };
 
-const date = (required = true, hook = undefined) => {
+export const date = (required = true, hook = undefined) => {
     const date = {
         value: Stream(''),
         complaint: false,
@@ -129,7 +122,7 @@ const date = (required = true, hook = undefined) => {
     return date;
 };
 
-const nativeDate = (required = true, daterange = undefined, hook = undefined) => {
+export const nativeDate = (required = true, daterange = undefined, hook = undefined) => {
     const date = {
         complaint: '',
         required: required,
@@ -176,7 +169,7 @@ const nativeDate = (required = true, daterange = undefined, hook = undefined) =>
     return date;
 };
 
-const time = (required = true, hook = undefined) => {
+export const time = (required = true, hook = undefined) => {
     const time = {
         value: Stream(''),
         complaint: false,
@@ -199,7 +192,7 @@ const time = (required = true, hook = undefined) => {
     return time;
 };
 
-const gender = (required = true, hook = undefined) => {
+export const gender = (required = true, hook = undefined) => {
     const gender = {
         value: Stream(''),
         complaint: false,
@@ -229,7 +222,7 @@ const gender = (required = true, hook = undefined) => {
     return gender;
 };
 
-const phone = (required = true, hook = undefined) => {
+export const phone = (required = true, hook = undefined) => {
     const phone = {
         value: Stream(''),
         complaint: false,
@@ -252,7 +245,7 @@ const phone = (required = true, hook = undefined) => {
     return phone;
 };
 
-const radio = (required = true, hook = undefined) => {
+export const radio = (required = true, hook = undefined) => {
     const radio = {
         value: Stream(null),
         complaint: false,
@@ -269,7 +262,7 @@ const radio = (required = true, hook = undefined) => {
     return radio;
 };
 
-const checkbox = (required = true, hook = undefined) => {
+export const checkbox = (required = true, hook = undefined) => {
     const checkbox = {
         value: Stream(false),
         complaint: false,
@@ -287,7 +280,7 @@ const checkbox = (required = true, hook = undefined) => {
     return checkbox;
 };
 
-const bookingnr = (required = true, hook = undefined) => {
+export const bookingnr = (required = true, hook = undefined) => {
     const bookingnr = {
         value: Stream(''),
         complaint: false,
@@ -309,7 +302,7 @@ const bookingnr = (required = true, hook = undefined) => {
     return bookingnr;
 };
 
-const agencyid = (required = true, hook = undefined) => {
+export const agencyid = (required = true, hook = undefined) => {
     const agencyid = {
         value: Stream(''),
         complaint: false,
@@ -331,7 +324,7 @@ const agencyid = (required = true, hook = undefined) => {
     return agencyid;
 };
 
-const iban = (required = true, hook = undefined) => {
+export const iban = (required = true, hook = undefined) => {
     const iban = {
         value: Stream(''),
         complaint: false,

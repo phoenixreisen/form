@@ -1,12 +1,6 @@
-export {
-    UserTypes,
-    DateConfig,
-    ValidationTypes,
-}
+//--- ENUMS & KONFIG -----
 
-// ENUMS & KONFIG --------------------------------------
-
-const DateConfig = {
+export const DateConfig = {
     patterns: {
         de: 'DD.MM.YYYY',
         en: 'YYYY-MM-DD',
@@ -23,14 +17,14 @@ const DateConfig = {
     },
 };
 
-const UserTypes = {
+export const UserTypes = {
     customer: 'customer',
     employee: 'employee',
     phoenix: 'phoenix',
     agency: 'agency',
 };
 
-const ValidationTypes = {
+export const ValidationTypes = {
     empty: 'empty',
     invalid: 'invalid',
     notequal: 'not-equal',

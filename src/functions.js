@@ -1,19 +1,14 @@
-export {
-    isValidInput,
-    isDateSupported,
-    getBtnStatusClass,
-}
-
-// FUNKTIONEN ----------------------------------------------
+//--- FUNKTIONEN -----
 
 /**
+  * DEPRECATED (aufgrund "Notification" Komponente)
   * gibt die jeweilige Status-CSS-Klasse
   * für den Submit-Button zurück.
-  * @param {bool} success 
-  * @param {bool/object} error 
+  * @param {bool} success
+  * @param {bool/object} error
   * @returns {string} CSS Klasse
   */
-function getBtnStatusClass(success, error) {
+export function getBtnStatusClass(success, error) {
     let classname = '';
     classname = success ? 'btn--success' : classname;
     classname = error ? 'btn--danger' : classname;
@@ -24,10 +19,10 @@ function getBtnStatusClass(success, error) {
   * Ruf die validate()-Funktionen aller Felder
   * auf und prüft anschließend, ob alle valide sind.
   * Gut, um ein ganzes Formular vor Submit zu prüfen.
-  * @param {array} fields 
+  * @param {array} fields
   * @returns {bool} ja/nein
   */
-function isValidInput(fields) {
+export function isValidInput(fields) {
     const fieldnames = Object.keys(fields);
     let hasErrors = false;
     // validate() aller Felder aufrufen und complaint prüfen
@@ -44,7 +39,7 @@ function isValidInput(fields) {
  * nativen Datepicker mitbringt oder nicht.
  * @returns {bool} ja/nein
  */
-function isDateSupported() {
+export function isDateSupported() {
     const value = 'test';
     const input = document.createElement('input');
     input.setAttribute('type', 'date');
