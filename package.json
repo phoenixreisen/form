@@ -2,7 +2,8 @@
   "name": "@phoenixreisen/form",
   "version": "0.0.9",
   "description": "Wiederverwendbarer Stuff für reaktives Formularhandling",
-  "main": "src/form.js",
+  "main": "src/form.min.js",
+  "module": "src/form.js",
   "scripts": {
     "minify": "npx uglifyjs ./src/form.min.js -o ./src/form.min.js",
     "compile": "npx babel ./src/form.js --presets @babel/preset-env -o ./src/form.min.js",
