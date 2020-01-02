@@ -61,7 +61,7 @@ describe("form handler - functions", () => {
         const { getBtnStatusClass } = form;
         const succeeded = true;
         let btnClass = '';
-        
+
         btnClass = getBtnStatusClass(succeeded);
         expect(btnClass).toBe('btn--success');
         btnClass = getBtnStatusClass(false, error);
@@ -74,7 +74,7 @@ describe("form handler - functions", () => {
         const isSupported = isDateSupported();
         expect(isSupported).toBeTruthy();
     });
-    
+
     it('should fire & check the fields validation correctly', () => {
         const { int, text, isValidInput } = form;
         let isValid = false;
@@ -86,7 +86,7 @@ describe("form handler - functions", () => {
         };
         // TEST 1 - invalid
         fields.age.validate('test');        // invalid, da int erwartet wird
-        fields.prename.validate('Fabian');  
+        fields.prename.validate('Fabian');
         fields.surname.validate('Marcus');
         isValid = isValidInput(fields);
         expect(isValid).toBeFalsy();
@@ -116,15 +116,15 @@ describe("form handler - field check", () => {
         field.validate('');
         expect(field.value()).toBe('');
         expect(field.complaint).toBe(ValidationTypes.empty);
-        
+
         field.validate('test');
         expect(field.value()).toBe('test');
         expect(field.complaint).toBe(ValidationTypes.invalid);
-        
+
         field.validate('123');
         expect(field.value()).toBe('123');
         expect(field.complaint).toBe(ValidationTypes.invalid);
-        
+
         field.validate('123456');
         expect(field.value()).toBe('123456');
         expect(field.complaint).toBe(false);
@@ -138,7 +138,7 @@ describe("form handler - field check", () => {
         field = bookingnr(true, (input) => {
             input = input + '987';
             return input;
-        }); 
+        });
         field.validate('123456');
         expect(field.value()).toBe('123456987');
     });
@@ -172,7 +172,7 @@ describe("form handler - field check", () => {
         field = agencyid(true, (input) => {
             input = input + '987';
             return input;
-        }); 
+        });
         field.validate('123456');
         expect(field.value()).toBe('123456987');
     });
@@ -184,7 +184,7 @@ describe("form handler - field check", () => {
         field.validate('');
         expect(field.value()).toBe('');
         expect(field.complaint).toBe(ValidationTypes.empty);
-        
+
         field.validate('test');
         expect(field.value()).toBe('test');
         expect(field.complaint).toBe(ValidationTypes.invalid);
@@ -196,7 +196,7 @@ describe("form handler - field check", () => {
         field.validate('weiblich');
         expect(field.value()).toBe('weiblich');
         expect(field.complaint).toBe(false);
-        
+
         // --- Hook
         field = gender(true, (input) => {
             input = 'divers';
@@ -214,7 +214,7 @@ describe("form handler - field check", () => {
         field.validate('');
         expect(field.value()).toBe('');
         expect(field.complaint).toBe(true);
-        
+
         field.validate('test');
         expect(field.value()).toBe('');
         expect(field.complaint).toBe(true);
@@ -236,7 +236,7 @@ describe("form handler - field check", () => {
         field.validate('');
         expect(field.value()).toBe('');
         expect(field.complaint).toBe(ValidationTypes.empty);
-        
+
         field.validate('123');
         expect(field.value()).toBe('123');
         expect(field.complaint).toBe(ValidationTypes.invalid);
@@ -257,9 +257,9 @@ describe("form handler - field check", () => {
 
         // --- Email-Syntax-Check (Validator isEmail())
         const invalides = [
-            'fab,mar@phoenix.de', 
-            'fabian@phoenix,com', 
-            'fabian.com', 
+            'fab,mar@phoenix.de',
+            'fabian@phoenix,com',
+            'fabian.com',
             'fabian@phoenix-com',
             'fabian@phoenix',
         ];
@@ -268,7 +268,7 @@ describe("form handler - field check", () => {
             expect(field2.value()).toBe(value);
             expect(field2.complaint).toBe(ValidationTypes.invalid);
         }
-        
+
         // --- Pflichtprüfung
         field2.validate('');
         expect(field2.complaint).toBe(false);
@@ -282,6 +282,9 @@ describe("form handler - field check", () => {
         field.validate('');
         field2.validate('');
         expect(field2.complaint).toBe(false);
+        expect(field.complaint).toBe(ValidationTypes.empty);
+
+        field.validate(' ');
         expect(field.complaint).toBe(ValidationTypes.empty);
 
         field.validate('hallo');
@@ -303,7 +306,7 @@ describe("form handler - field check", () => {
         field.validate('');
         expect(field.value()).toBe('');
         expect(field.complaint).toBe(ValidationTypes.empty);
-        
+
         field.validate('123t');
         expect(field.value()).toBe('123t');
         expect(field.complaint).toBe(ValidationTypes.invalid);
@@ -320,7 +323,7 @@ describe("form handler - field check", () => {
         field.validate('');
         expect(field.value()).toBe('');
         expect(field.complaint).toBe(ValidationTypes.empty);
-        
+
         // VORGABE: TT.MM.JJJJ
         for(const value of ['13.8.2019', '3.10.2019', '13.10.19', '2019-10-03']) {
             field.validate(value);
@@ -363,7 +366,7 @@ describe("form handler - field check", () => {
             expect(field.value()).toBe(value);
             expect(field.complaint).toBeFalsy();
         }
-        
+
         // --- Prüfung Range
         const inRange = format(addDays(new Date(), 2), 'DD.MM.YYYY');
         const outOfRange = format(addDays(new Date(), -2), 'DD.MM.YYYY')
@@ -385,7 +388,7 @@ describe("form handler - field check", () => {
         field.validate('');
         expect(field.value()).toBe('');
         expect(field.complaint).toBe(ValidationTypes.empty);
-        
+
         // VORGABE: hh:mm
         for(const value of ['13.00', '4:00', '4', '12.3', '12:5']) {
             field.validate(value);
@@ -440,7 +443,7 @@ describe("form handler - field check", () => {
         field.validate('DE02500105170137075030');
         expect(field.value()).toBe('DE02500105170137075030');
         expect(field.complaint).toBe(false);
-        
+
         const input = document.createElement('input');
         input.setAttribute('type', 'text');
         input.setAttribute('value', 'EN02500105170137075030');

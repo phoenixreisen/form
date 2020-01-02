@@ -28,7 +28,7 @@ const text = (required = true, hook = undefined) => {
         required: required,
         validate: (input) => {
             const { mirror } = text;
-            if((!input || isEmpty(input)) && text.required) {
+            if((!input || isEmpty(input.trim())) && text.required) {
                 text.complaint = ValidationTypes.empty;
             } else if(mirror && (mirror.value() !== input)) {
                 text.complaint = ValidationTypes.notequal;
@@ -76,7 +76,7 @@ const email = (required = true, hook = undefined) => {
         required: required,
         validate: (input) => {
             const { mirror } = email;
-            if((!input || isEmpty(input)) && email.required) {
+            if((!input || isEmpty(input.trim())) && email.required) {
                 email.complaint = ValidationTypes.empty;
             } else if(!isEmpty(input) && !isEmail(input)) {
                 email.complaint = ValidationTypes.invalid;
@@ -102,7 +102,7 @@ const date = (required = true, hook = undefined) => {
         required: required,
         validate: (input) => {
             const { patterns } = DateConfig;
-            if((!input || isEmpty(input)) && date.required) {
+            if((!input || isEmpty(input.trim())) && date.required) {
                 date.complaint = ValidationTypes.empty;
             } else if(!DateTime.isValid(input, patterns.de) || input.length < patterns.de.length) {
                 date.complaint = ValidationTypes.invalid;
@@ -142,7 +142,7 @@ const nativeDate = (required = true, daterange = undefined, hook = undefined) =>
             if((!datestring || !datestring.length) && date.required) {
                 date.complaint = ValidationTypes.empty;
             }
-            else if((datestring) 
+            else if((datestring)
             && (!isValid(datestring, patterns.de) || datestring.length < patterns.de.length)
             && (!isValid(datestring, patterns.en) || datestring.length < patterns.en.length)) {
                 date.complaint = ValidationTypes.invalid;
@@ -151,7 +151,7 @@ const nativeDate = (required = true, daterange = undefined, hook = undefined) =>
                 const inputdate = isNaN(parse(datestring, patterns.de))
                     ? parse(datestring, patterns.en)
                     : parse(datestring, patterns.de);
-                if(range && (range[0] && (inputdate < range[0]) 
+                if(range && (range[0] && (inputdate < range[0])
                 || (range[1] && inputdate > range[1]))) {
                     date.complaint = ValidationTypes.outOfRange;
                 }
@@ -182,7 +182,7 @@ const time = (required = true, hook = undefined) => {
         complaint: false,
         required: required,
         validate: (input) => {
-            if((!input || isEmpty(input.toString())) && time.required) {
+            if((!input || isEmpty(input.toString().trim())) && time.required) {
                 time.complaint = ValidationTypes.empty;
             } else if(!DateTime.isValid(input, 'hh:mm')) {
                 time.complaint = ValidationTypes.invalid;
@@ -205,15 +205,15 @@ const gender = (required = true, hook = undefined) => {
         complaint: false,
         required: required,
         validate: (input) => {
-            if((!input || isEmpty(input)) && gender.required) {
+            if((!input || isEmpty(input.trim())) && gender.required) {
                 gender.complaint = ValidationTypes.empty;
             } else if(input.length &&
                 input.toLowerCase() !== 'herr' &&
                 input.toLowerCase() !== 'frau' &&
-                input.toLowerCase() !== 'maenlich' && 
-                input.toLowerCase() !== 'maennlich' && 
+                input.toLowerCase() !== 'maenlich' &&
+                input.toLowerCase() !== 'maennlich' &&
                 input.toLowerCase() !== 'weiblich' &&
-                input.toLowerCase() !== 'divers') 
+                input.toLowerCase() !== 'divers')
             {
                 gender.complaint = ValidationTypes.invalid;
             }  else {
@@ -298,7 +298,7 @@ const bookingnr = (required = true, hook = undefined) => {
                 : (input && (!isInt(input) || input.length !== 6))
                     ? ValidationTypes.invalid
                     : false;
-            
+
             const hooked = (hook && hook(input, bookingnr));
             input = (hooked !== null && hooked !== undefined)
                 ? hooked
@@ -314,13 +314,13 @@ const agencyid = (required = true, hook = undefined) => {
         value: Stream(''),
         complaint: false,
         required: required,
-        validate: (input) => {
-            agencyid.complaint = ((!input || isEmpty(input)) && agencyid.required)
+        validate: input => {
+            agencyid.complaint = ((!input || isEmpty(input.trim())) && agencyid.required)
                 ? ValidationTypes.empty
                 : (input && (!isInt(input) || input.length !== 6))
                     ? ValidationTypes.invalid
                     : false;
-            
+
             const hooked = (hook && hook(input, agencyid));
             input = (hooked !== null && hooked !== undefined)
                 ? hooked
@@ -338,7 +338,7 @@ const iban = (required = true, hook = undefined) => {
         required: required,
         validate: input => {
             iban.complaint = false;
-            if(iban.required && (!input || isEmpty(input))) {
+            if(iban.required && (!input || isEmpty(input.trim()))) {
                 iban.complaint = ValidationTypes.empty;
             }
             else if(input && !isIban.isValid(input)) {
@@ -351,7 +351,7 @@ const iban = (required = true, hook = undefined) => {
             iban.value(input);
         },
         format: e => {
-            const target = e.target || e; 
+            const target = e.target || e;
             const length = target.value.length;
             let position = target.selectionEnd;
             iban.complaint = false;
@@ -360,9 +360,9 @@ const iban = (required = true, hook = undefined) => {
                 .replace(/(.{4})/g, '$1 ')
                 .trim();
             target.selectionEnd = position += ((
-                target.value.charAt(position - 1) === ' ' 
-                && target.value.charAt(length - 1) === ' ' 
-                && length !== target.value.length) 
+                target.value.charAt(position - 1) === ' '
+                && target.value.charAt(length - 1) === ' '
+                && length !== target.value.length)
                 ? 1 : 0
             );
             iban.validate(target.value);
