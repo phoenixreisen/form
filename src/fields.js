@@ -11,6 +11,15 @@ import isIban from 'iban';
 require('date-and-time/locale/de');
 DateTime.locale('de');
 
+//--- HELPER -----
+
+const hookIt = (hook, input, field) => {
+    const hooked = (hook && hook(input, field));
+    return (hooked !== null && hooked !== undefined)
+        ? hooked
+        : input;
+}
+
 //--- FELDER -----
 
 export const text = (required = true, hook = undefined) => {
@@ -21,17 +30,13 @@ export const text = (required = true, hook = undefined) => {
         required: required,
         validate: (input) => {
             const { mirror } = text;
-            if((!input || isEmpty(input.trim())) && text.required) {
-                text.complaint = ValidationTypes.empty;
-            } else if(mirror && (mirror.value() !== input)) {
-                text.complaint = ValidationTypes.notequal;
-            } else {
-                text.complaint = false;
-            }
-            const hooked = (hook && hook(input, text));
-            input = (hooked !== null && hooked !== undefined)
-                ? hooked
-                : input;
+            text.complaint = ((!input || isEmpty(input.trim())) && text.required)
+                ? ValidationTypes.empty
+                : (mirror && (mirror.value() !== input))
+                    ? ValidationTypes.notequal
+                    : false;
+
+            input = hookIt(hook, input, text);
             text.value(input);
         },
     };
@@ -44,17 +49,13 @@ export const int = (required = true, hook = undefined) => {
         complaint: false,
         required: required,
         validate: (input) => {
-            if(!input && input !== 0 && int.required) {
-                int.complaint = ValidationTypes.empty;
-            } else if(input && !isInt(input)) {
-                int.complaint = ValidationTypes.invalid;
-            } else {
-                int.complaint = false;
-            }
-            const hooked = (hook && hook(input, int));
-            input = (hooked !== null && hooked !== undefined)
-                ? hooked
-                : input;
+            int.complaint = (!input && input !== 0 && int.required)
+                ? ValidationTypes.empty
+                : (input && !isInt(input))
+                    ? ValidationTypes.invalid
+                    : false;
+
+            input = hookIt(hook, input, int);
             int.value(input);
         },
     };
@@ -69,19 +70,15 @@ export const email = (required = true, hook = undefined) => {
         required: required,
         validate: (input) => {
             const { mirror } = email;
-            if((!input || isEmpty(input.trim())) && email.required) {
-                email.complaint = ValidationTypes.empty;
-            } else if(!isEmpty(input) && !isEmail(input)) {
-                email.complaint = ValidationTypes.invalid;
-            } else if(mirror && mirror.value() !== input) {
-                email.complaint = ValidationTypes.notequal;
-            } else {
-                email.complaint = false;
-            }
-            const hooked = (hook && hook(input, email));
-            input = (hooked !== null && hooked !== undefined)
-                ? hooked
-                : input;
+            email.complaint = ((!input || isEmpty(input.trim())) && email.required)
+                ? ValidationTypes.empty
+                : (!isEmpty(input) && !isEmail(input))
+                    ? ValidationTypes.invalid
+                    : (mirror && mirror.value() !== input)
+                        ? ValidationTypes.notequal
+                        : false;
+
+            input = hookIt(hook, input, email);
             email.value(input);
         },
     };
@@ -95,28 +92,22 @@ export const date = (required = true, hook = undefined) => {
         required: required,
         validate: (input) => {
             const { patterns } = DateConfig;
-            if((!input || isEmpty(input.trim())) && date.required) {
-                date.complaint = ValidationTypes.empty;
-            } else if(!DateTime.isValid(input, patterns.de) || input.length < patterns.de.length) {
-                date.complaint = ValidationTypes.invalid;
-            } else {
-                date.complaint = false;
-            }
-            const hooked = (hook && hook(input, date));
-            input = (hooked !== null && hooked !== undefined)
-                ? hooked
-                : input;
+            date.complaint = ((!input || isEmpty(input.trim())) && date.required)
+                ? ValidationTypes.empty
+                : (!DateTime.isValid(input, patterns.de) || input.length < patterns.de.length)
+                    ? ValidationTypes.invalid
+                    : false;
+
+            input = hookIt(hook, input, date);
             date.value(input);
         },
         getDate: () => {
             const { patterns } = DateConfig;
-            if(DateTime.isValid(date.value(), patterns.de)) {
-                return DateTime.parse(date.value(), patterns.de);
-            } else if(DateTime.isValid(date.value(), patterns.en)) {
-                return DateTime.parse(date.value(), patterns.en);
-            } else {
-                return null;
-            }
+            return (DateTime.isValid(date.value(), patterns.de))
+                ? DateTime.parse(date.value(), patterns.de)
+                : (DateTime.isValid(date.value(), patterns.en))
+                    ? DateTime.parse(date.value(), patterns.en)
+                    : null;
         },
     };
     return date;
@@ -157,13 +148,11 @@ export const nativeDate = (required = true, daterange = undefined, hook = undefi
         },
         getDate: () => {
             const { patterns } = DateConfig;
-            if(DateTime.isValid(date.value(), patterns.de)) {
-                return DateTime.parse(date.value(), patterns.de);
-            } else if(DateTime.isValid(date.value(), patterns.en)) {
-                return DateTime.parse(date.value(), patterns.en);
-            } else {
-                return null;
-            }
+            return (DateTime.isValid(date.value(), patterns.de))
+                ? DateTime.parse(date.value(), patterns.de)
+                : (DateTime.isValid(date.value(), patterns.en))
+                    ? DateTime.parse(date.value(), patterns.en)
+                    : null;
         },
     };
     return date;
@@ -175,17 +164,13 @@ export const time = (required = true, hook = undefined) => {
         complaint: false,
         required: required,
         validate: (input) => {
-            if((!input || isEmpty(input.toString().trim())) && time.required) {
-                time.complaint = ValidationTypes.empty;
-            } else if(!DateTime.isValid(input, 'hh:mm')) {
-                time.complaint = ValidationTypes.invalid;
-            } else {
-                time.complaint = false;
-            }
-            const hooked = (hook && hook(input, time));
-            input = (hooked !== null && hooked !== undefined)
-                ? hooked
-                : input;
+            time.complaint = ((!input || isEmpty(input.toString().trim())) && time.required)
+                ? ValidationTypes.empty
+                : (!DateTime.isValid(input, 'hh:mm'))
+                    ? ValidationTypes.invalid
+                    : false;
+
+            input = hookIt(hook, input, time);
             time.value(input);
         },
     };
@@ -198,24 +183,19 @@ export const gender = (required = true, hook = undefined) => {
         complaint: false,
         required: required,
         validate: (input) => {
-            if((!input || isEmpty(input.trim())) && gender.required) {
-                gender.complaint = ValidationTypes.empty;
-            } else if(input.length &&
-                input.toLowerCase() !== 'herr' &&
-                input.toLowerCase() !== 'frau' &&
-                input.toLowerCase() !== 'maenlich' &&
-                input.toLowerCase() !== 'maennlich' &&
-                input.toLowerCase() !== 'weiblich' &&
-                input.toLowerCase() !== 'divers')
-            {
-                gender.complaint = ValidationTypes.invalid;
-            }  else {
-                gender.complaint = false;
-            }
-            const hooked = (hook && hook(input, gender));
-            input = (hooked !== null && hooked !== undefined)
-                ? hooked
-                : input;
+            gender.complaint = ((!input || isEmpty(input.trim())) && gender.required)
+                ? gender.complaint = ValidationTypes.empty
+                : (input.length &&
+                    input.toLowerCase() !== 'herr' &&
+                    input.toLowerCase() !== 'frau' &&
+                    input.toLowerCase() !== 'maenlich' &&
+                    input.toLowerCase() !== 'maennlich' &&
+                    input.toLowerCase() !== 'weiblich' &&
+                    input.toLowerCase() !== 'divers')
+                    ? ValidationTypes.invalid
+                    : false;
+
+            input = hookIt(hook, input, gender);
             gender.value(input);
         },
     };
@@ -228,18 +208,12 @@ export const phone = (required = true, hook = undefined) => {
         complaint: false,
         required: required,
         validate: (input) => {
-            if(input.length && !input.match(/^[0-9+-]+$/)) {
-                return; // wenn es keine Ziffer ist, verwerfe es.
-            } else if((!input || isEmpty(input)) && phone.required) {
-                phone.complaint = true;
-            } else {
-                phone.complaint = false;
+            // wenn es keine Ziffer ist, verwerfe es.
+            if(!input.length || input.match(/^[0-9+-]+$/)) {
+                phone.complaint = ((!input || isEmpty(input)) && phone.required);
+                input = hookIt(hook, input, phone);
+                phone.value(input);
             }
-            const hooked = (hook && hook(input, phone));
-            input = (hooked !== null && hooked !== undefined)
-                ? hooked
-                : input;
-            phone.value(input);
         },
     };
     return phone;
@@ -252,10 +226,7 @@ export const radio = (required = true, hook = undefined) => {
         required: required,
         validate: (input) => {
             radio.complaint = (input === null && radio.required);
-            const hooked = (hook && hook(input, radio));
-            input = (hooked !== null && hooked !== undefined)
-                ? hooked
-                : input;
+            input = hookIt(hook, input, radio);
             radio.value(input);
         },
     };
@@ -270,10 +241,7 @@ export const checkbox = (required = true, hook = undefined) => {
         validate: (input) => {
             const checked = input ? true : false;
             checkbox.complaint = (!checked && checkbox.required);
-            const hooked = (hook && hook(input, checkbox));
-            input = (hooked !== null && hooked !== undefined)
-                ? hooked
-                : input;
+            input = hookIt(hook, input, checkbox);
             checkbox.value(checked);
         },
     };
@@ -292,10 +260,7 @@ export const bookingnr = (required = true, hook = undefined) => {
                     ? ValidationTypes.invalid
                     : false;
 
-            const hooked = (hook && hook(input, bookingnr));
-            input = (hooked !== null && hooked !== undefined)
-                ? hooked
-                : input;
+            input = hookIt(hook, input, bookingnr);
             bookingnr.value(input);
         },
     };
@@ -314,10 +279,7 @@ export const agencyid = (required = true, hook = undefined) => {
                     ? ValidationTypes.invalid
                     : false;
 
-            const hooked = (hook && hook(input, agencyid));
-            input = (hooked !== null && hooked !== undefined)
-                ? hooked
-                : input;
+            input = hookIt(hook, input, agencyid);
             agencyid.value(input);
         },
     };
@@ -330,17 +292,13 @@ export const iban = (required = true, hook = undefined) => {
         complaint: false,
         required: required,
         validate: input => {
-            iban.complaint = false;
-            if(iban.required && (!input || isEmpty(input.trim()))) {
-                iban.complaint = ValidationTypes.empty;
-            }
-            else if(input && !isIban.isValid(input)) {
-                iban.complaint = ValidationTypes.invalid;
-            }
-            const hooked = (hook && hook(input, iban));
-            input = (hooked !== null && hooked !== undefined)
-                ? hooked
-                : input;
+            iban.complaint = (iban.required && (!input || isEmpty(input.trim())))
+                ? ValidationTypes.empty
+                : (input && !isIban.isValid(input))
+                    ? ValidationTypes.invalid
+                    : false;
+
+            input = hookIt(hook, input, iban);
             iban.value(input);
         },
         format: e => {
