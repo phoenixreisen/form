@@ -1,16 +1,16 @@
-import { 
-    UserTypes, 
-    DateConfig, 
-    ValidationTypes 
+import {
+    UserTypes,
+    DateConfig,
+    ValidationTypes
 } from './config';
 
 import { 
-    isValidInput, 
-    isDateSupported, 
-    getBtnStatusClass 
+    isValidInput,
+    isDateSupported,
+    getBtnStatusClass
 } from './functions';
 
-import { 
+import {
     bookingnr, agencyid,
     gender, phone, email,
     text, int, date, nativeDate,
@@ -22,11 +22,11 @@ export {
     UserTypes,
     DateConfig,
     ValidationTypes,
-    
+
     isValidInput,
     isDateSupported,
     getBtnStatusClass,
-    
+
     bookingnr, agencyid,
     gender, phone, email,
     text, int, date, nativeDate,

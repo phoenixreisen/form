@@ -1,5 +1,5 @@
 const datetime = require('date-and-time');
-const form = require('../test/form');
+const form = require('../dist/form.js');
 const jsdom = require('jsdom');
 
 // DOM mocken -----------------------------------------------------
