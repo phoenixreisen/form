@@ -318,7 +318,7 @@ describe("form handler - field check", () => {
 
     it('should handle & validate german date inputs correctly', () => {
         const { date, ValidationTypes } = form;
-        let field = date();
+        let field = date(true, ['de']);
 
         field.validate('');
         expect(field.value()).toBe('');
@@ -342,11 +342,12 @@ describe("form handler - field check", () => {
     });
 
     it('should handle & validate datepicker dates correctly', () => {
+        const required = true;
         const { addDays, format } = datetime;
-        const { nativeDate, ValidationTypes } = form;
-        let rangeField = nativeDate(true, [new Date(), addDays(new Date, 5)]);
-        let field = nativeDate(true);
-        let field2 = nativeDate(false);
+        const { date, ValidationTypes } = form;
+        let rangeField = date(required, ['de'], [new Date(), addDays(new Date, 5)]);
+        let field = date(required, ['de', 'en']);
+        let field2 = date(!required, ['de']);
 
         field.validate('');
         field2.validate('');

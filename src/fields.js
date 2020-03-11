@@ -1,15 +1,10 @@
-import { ValidationTypes, DateConfig } from './config';
+import {ValidationTypes, DateConfig} from './config';
 import isEmail from 'validator/lib/isEmail';
-import isEmpty from 'validator/lib/isEmpty';
 import isInt from 'validator/lib/isInt';
-import DateTime from 'date-and-time';
-import Stream from 'mithril/stream';
+import datetime from 'date-and-time';
+import 'date-and-time/locale/de';
+import stream from 'mithril/stream';
 import isIban from 'iban';
-
-//--- INIT -----
-
-require('date-and-time/locale/de');
-DateTime.locale('de');
 
 //--- HELPER -----
 
@@ -24,13 +19,13 @@ const hookIt = (hook, input, field) => {
 
 export const text = (required = true, hook = undefined) => {
     const text = {
-        value: Stream(''),
+        value: stream(''),
         complaint: false,
         mirror: undefined,
         required: required,
-        validate: (input) => {
+        validate: (input = '') => {
             const { mirror } = text;
-            text.complaint = ((!input || isEmpty(input.trim())) && text.required)
+            text.complaint = (!input.trim() && text.required)
                 ? ValidationTypes.empty
                 : (mirror && (mirror.value() !== input))
                     ? ValidationTypes.notequal
@@ -45,10 +40,10 @@ export const text = (required = true, hook = undefined) => {
 
 export const int = (required = true, hook = undefined) => {
     const int = {
-        value: Stream(null),
+        value: stream(null),
         complaint: false,
         required: required,
-        validate: (input) => {
+        validate: (input = null) => {
             int.complaint = (!input && input !== 0 && int.required)
                 ? ValidationTypes.empty
                 : (input && !isInt(input))
@@ -64,15 +59,15 @@ export const int = (required = true, hook = undefined) => {
 
 export const email = (required = true, hook = undefined) => {
     const email = {
-        value: Stream(''),
+        value: stream(''),
         complaint: false,
         mirror: undefined,
         required: required,
-        validate: (input) => {
+        validate: (input = '') => {
             const { mirror } = email;
-            email.complaint = ((!input || isEmpty(input.trim())) && email.required)
+            email.complaint = (!input.trim() && email.required)
                 ? ValidationTypes.empty
-                : (!isEmpty(input) && !isEmail(input))
+                : (input.trim() && !isEmail(input))
                     ? ValidationTypes.invalid
                     : (mirror && mirror.value() !== input)
                         ? ValidationTypes.notequal
@@ -85,74 +80,52 @@ export const email = (required = true, hook = undefined) => {
     return email;
 };
 
-export const date = (required = true, hook = undefined) => {
+export const date = (required = true, langs = ['de'], daterange = null, hook = null) => {
+    datetime.locale('de');
+    const langkeys = langs || ['de'];
     const date = {
-        value: Stream(''),
+        value: stream(''),
         complaint: false,
         required: required,
-        validate: (input) => {
+        validate: (input = '', range = daterange) => {
+            const { isValid, parse } = datetime;
             const { patterns } = DateConfig;
-            date.complaint = ((!input || isEmpty(input.trim())) && date.required)
-                ? ValidationTypes.empty
-                : (!DateTime.isValid(input, patterns.de) || input.length < patterns.de.length)
-                    ? ValidationTypes.invalid
-                    : false;
+            let datelang = null;
 
-            input = hookIt(hook, input, date);
+            if(!input.trim() && date.required) {
+                date.complaint = ValidationTypes.empty;
+            } else if(input.trim()) {
+                date.complaint = ValidationTypes.invalid;
+                for(const key of langkeys) {
+                    const isValidDate = isValid(input, patterns[key]);
+                    const isTooShort = input.length < patterns[key].length;
+                    if(isValidDate && !isTooShort) {
+                        date.complaint = false;
+                        datelang = key;
+                        break;
+                    }
+                }
+            } else {
+                date.complaint = false;
+            }
+            if(datelang && range && !date.complaint) {
+                const inputdate = parse(input, patterns[datelang]);
+                if((range[0] && (inputdate < range[0]))
+                || (range[1] && (inputdate > range[1]))) {
+                    date.complaint = ValidationTypes.outOfRange;
+                }
+            }
+            input = (hook && hook(input, datelang, range, date)) || input;
             date.value(input);
         },
         getDate: () => {
             const { patterns } = DateConfig;
-            return (DateTime.isValid(date.value(), patterns.de))
-                ? DateTime.parse(date.value(), patterns.de)
-                : (DateTime.isValid(date.value(), patterns.en))
-                    ? DateTime.parse(date.value(), patterns.en)
-                    : null;
-        },
-    };
-    return date;
-};
-
-export const nativeDate = (required = true, daterange = undefined, hook = undefined) => {
-    const date = {
-        complaint: '',
-        required: required,
-        value: Stream(undefined),
-        validate: (datestring, range = daterange) => {
-            const { parse, isValid } = DateTime;
-            const { patterns } = DateConfig;
-
-            date.complaint = '';
-            if((!datestring || !datestring.length) && date.required) {
-                date.complaint = ValidationTypes.empty;
-            }
-            else if((datestring)
-            && (!isValid(datestring, patterns.de) || datestring.length < patterns.de.length)
-            && (!isValid(datestring, patterns.en) || datestring.length < patterns.en.length)) {
-                date.complaint = ValidationTypes.invalid;
-            }
-            if(!date.complaint) {
-                const inputdate = isNaN(parse(datestring, patterns.de))
-                    ? parse(datestring, patterns.en)
-                    : parse(datestring, patterns.de);
-                if(range && (range[0] && (inputdate < range[0])
-                || (range[1] && inputdate > range[1]))) {
-                    date.complaint = ValidationTypes.outOfRange;
+            for(const key of langkeys) {
+                if(datetime.isValid(date.value(), patterns[key])) {
+                    return datetime.parse(date.value(), patterns[key]);
                 }
             }
-            const hooked = (hook && hook(datestring, range, date));
-            datestring = (hooked !== null && hooked !== undefined)
-                ? hooked
-                : datestring;
-            date.value(datestring);
-        },
-        getDate: () => {
-            const { patterns } = DateConfig;
-            return (DateTime.isValid(date.value(), patterns.de))
-                ? DateTime.parse(date.value(), patterns.de)
-                : (DateTime.isValid(date.value(), patterns.en))
-                    ? DateTime.parse(date.value(), patterns.en)
-                    : null;
+            return null;
         },
     };
     return date;
@@ -160,13 +133,14 @@ export const nativeDate = (required = true, daterange = undefined, hook = undefi
 
 export const time = (required = true, hook = undefined) => {
     const time = {
-        value: Stream(''),
+        value: stream(''),
         complaint: false,
         required: required,
-        validate: (input) => {
-            time.complaint = ((!input || isEmpty(input.toString().trim())) && time.required)
+        validate: (input = '') => {
+            const { isValid } = datetime;
+            time.complaint = (!input.trim() && time.required)
                 ? ValidationTypes.empty
-                : (!DateTime.isValid(input, 'hh:mm'))
+                : (input.trim() && !isValid(input, 'hh:mm'))
                     ? ValidationTypes.invalid
                     : false;
 
@@ -179,19 +153,14 @@ export const time = (required = true, hook = undefined) => {
 
 export const gender = (required = true, hook = undefined) => {
     const gender = {
-        value: Stream(''),
+        value: stream(''),
         complaint: false,
         required: required,
-        validate: (input) => {
-            gender.complaint = ((!input || isEmpty(input.trim())) && gender.required)
+        validate: (input = '') => {
+            const types = ['herr', 'frau', 'maenlich', 'maennlich', 'weiblich', 'divers'];
+            gender.complaint = (!input.trim() && gender.required)
                 ? gender.complaint = ValidationTypes.empty
-                : (input.length &&
-                    input.toLowerCase() !== 'herr' &&
-                    input.toLowerCase() !== 'frau' &&
-                    input.toLowerCase() !== 'maenlich' &&
-                    input.toLowerCase() !== 'maennlich' &&
-                    input.toLowerCase() !== 'weiblich' &&
-                    input.toLowerCase() !== 'divers')
+                : (input.trim() && !types.includes(input))
                     ? ValidationTypes.invalid
                     : false;
 
@@ -204,13 +173,13 @@ export const gender = (required = true, hook = undefined) => {
 
 export const phone = (required = true, hook = undefined) => {
     const phone = {
-        value: Stream(''),
+        value: stream(''),
         complaint: false,
         required: required,
-        validate: (input) => {
+        validate: (input = '') => {
             // wenn es keine Ziffer ist, verwerfe es.
-            if(!input.length || input.match(/^[0-9+-]+$/)) {
-                phone.complaint = ((!input || isEmpty(input)) && phone.required);
+            if(!input.trim() || input.match(/^[0-9+-]+$/)) {
+                phone.complaint = (!input.trim() && phone.required);
                 input = hookIt(hook, input, phone);
                 phone.value(input);
             }
@@ -221,10 +190,10 @@ export const phone = (required = true, hook = undefined) => {
 
 export const radio = (required = true, hook = undefined) => {
     const radio = {
-        value: Stream(null),
+        value: stream(null),
         complaint: false,
         required: required,
-        validate: (input) => {
+        validate: (input = null) => {
             radio.complaint = (input === null && radio.required);
             input = hookIt(hook, input, radio);
             radio.value(input);
@@ -235,10 +204,10 @@ export const radio = (required = true, hook = undefined) => {
 
 export const checkbox = (required = true, hook = undefined) => {
     const checkbox = {
-        value: Stream(false),
+        value: stream(false),
         complaint: false,
         required: required,
-        validate: (input) => {
+        validate: (input = false) => {
             const checked = input ? true : false;
             checkbox.complaint = (!checked && checkbox.required);
             input = hookIt(hook, input, checkbox);
@@ -250,11 +219,11 @@ export const checkbox = (required = true, hook = undefined) => {
 
 export const bookingnr = (required = true, hook = undefined) => {
     const bookingnr = {
-        value: Stream(''),
+        value: stream(''),
         complaint: false,
         required: required,
-        validate: (input) => {
-            bookingnr.complaint = ((!input || isEmpty(input)) && bookingnr.required)
+        validate: (input = '') => {
+            bookingnr.complaint = (!input.trim() && bookingnr.required)
                 ? ValidationTypes.empty
                 : (input && (!isInt(input) || input.length !== 6))
                     ? ValidationTypes.invalid
@@ -269,13 +238,13 @@ export const bookingnr = (required = true, hook = undefined) => {
 
 export const agencyid = (required = true, hook = undefined) => {
     const agencyid = {
-        value: Stream(''),
+        value: stream(''),
         complaint: false,
         required: required,
-        validate: input => {
-            agencyid.complaint = ((!input || isEmpty(input.trim())) && agencyid.required)
+        validate: (input = '') => {
+            agencyid.complaint = (!input.trim() && agencyid.required)
                 ? ValidationTypes.empty
-                : (input && (!isInt(input) || input.length !== 6))
+                : (input.trim() && (!isInt(input) || input.length !== 6))
                     ? ValidationTypes.invalid
                     : false;
 
@@ -288,13 +257,13 @@ export const agencyid = (required = true, hook = undefined) => {
 
 export const iban = (required = true, hook = undefined) => {
     const iban = {
-        value: Stream(''),
+        value: stream(''),
         complaint: false,
         required: required,
-        validate: input => {
-            iban.complaint = (iban.required && (!input || isEmpty(input.trim())))
+        validate: (input = '') => {
+            iban.complaint = (iban.required && !input.trim())
                 ? ValidationTypes.empty
-                : (input && !isIban.isValid(input))
+                : (input.trim() && !isIban.isValid(input))
                     ? ValidationTypes.invalid
                     : false;
 
@@ -305,17 +274,14 @@ export const iban = (required = true, hook = undefined) => {
             const target = e.target || e;
             const length = target.value.length;
             let position = target.selectionEnd;
-            iban.complaint = false;
-            target.value = target.value
-                .replace(/[^\dA-Z]/g, '')
-                .replace(/(.{4})/g, '$1 ')
-                .trim();
+            target.value = isIban.printFormat(target.value);
             target.selectionEnd = position += ((
                 target.value.charAt(position - 1) === ' '
                 && target.value.charAt(length - 1) === ' '
                 && length !== target.value.length)
                 ? 1 : 0
             );
+            iban.complaint = false;
             iban.validate(target.value);
         },
     };
