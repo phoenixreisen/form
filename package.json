@@ -1,6 +1,6 @@
 {
   "name": "@phoenixreisen/form",
-  "version": "0.0.15",
+  "version": "0.1.0",
   "description": "Wiederverwendbarer Stuff für reaktives Formularhandling",
   "main": "dist/form.js",
   "module": "src/form.js",
