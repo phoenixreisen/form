@@ -2,7 +2,6 @@ import {ValidationTypes, DateConfig} from './config';
 import isEmail from 'validator/lib/isEmail';
 import isInt from 'validator/lib/isInt';
 import datetime from 'date-and-time';
-import 'date-and-time/locale/de';
 import stream from 'mithril/stream';
 import isIban from 'iban';
 
@@ -81,7 +80,6 @@ export const email = (required = true, hook = undefined) => {
 };
 
 export const date = (required = true, langs = ['de'], daterange = null, hook = null) => {
-    datetime.locale('de');
     const langkeys = langs || ['de'];
     const date = {
         value: stream(''),
