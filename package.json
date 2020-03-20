@@ -24,7 +24,7 @@
     "date-and-time": "^0.13.1",
     "iban": "0.0.14",
     "mithril": "^2.0.4",
-    "validator": "^12.2.0"
+    "validator": "^13.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
