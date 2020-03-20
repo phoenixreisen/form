@@ -13,8 +13,8 @@ import { 
 import {
     bookingnr, agencyid,
     gender, phone, email,
-    text, int, date, nativeDate,
-    time, radio, checkbox, iban
+    text, int, date, time,
+    radio, checkbox, iban
 } from './fields';
 
 
@@ -29,6 +29,6 @@ export {
 
     bookingnr, agencyid,
     gender, phone, email,
-    text, int, date, nativeDate,
-    time, radio, checkbox, iban,
+    text, int, date, time,
+    radio, checkbox, iban,
 };
