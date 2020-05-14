@@ -1,4 +1,4 @@
-//--- ENUMS & KONFIG -----
+//--- Konfig -----
 
 export const DateConfig = {
     patterns: {
@@ -17,16 +17,18 @@ export const DateConfig = {
     },
 };
 
-export const UserTypes = {
-    customer: 'customer',
-    employee: 'employee',
-    phoenix: 'phoenix',
-    agency: 'agency',
+//--- Enums -----
+
+export enum UserTypes {
+    agency = 'agency',
+    phoenix = 'phoenix',
+    employee = 'employee',
+    customer = 'customer',
 };
 
-export const ValidationTypes = {
-    empty: 'empty',
-    invalid: 'invalid',
-    notequal: 'not-equal',
-    outOfRange: 'out-of-range',
+export enum ValidationTypes {
+    empty = 'empty',
+    invalid = 'invalid',
+    notequal = 'not-equal',
+    outOfRange = 'out-of-range',
 };

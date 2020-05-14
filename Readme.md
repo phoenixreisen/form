@@ -1,6 +1,7 @@
 # Phoenix Reisen Formular Modul
 
-Wiederverwendbarer Stuff zum vereinfachten Handling reaktiver Formulare - instant Validierung für verschiedene Feldtypen, Validierung für gesamtes Formular, Prüfung auf Browser-Support für Datepicker, und anderes.
+Wiederverwendbarer Stuff zum vereinfachten Handling reaktiver Formulare - instant Validierung für verschiedene
+Feldtypen, Validierung für gesamtes Formular, Prüfung auf Browser-Support für Datepicker, und anderes.
 
 ## Installation
 
@@ -13,19 +14,19 @@ npm install --save @phoenixreisen/form
 Konfig & Types importieren:
 
 ```js
-import { DateConfig, ValidationTypes, UserTypes } from '@phoenixreisen/form';
+import {DateConfig, ValidationTypes, UserTypes} from '@phoenixreisen/form';
 ```
 
 Felder importieren:
 
 ```js
-import { text, int, email, bookingnr } from '@phoenixreisen/form';
+import {text, int, email, bookingnr} from '@phoenixreisen/form';
 ```
 
 Funktionen importieren:
 
 ```js
-import { isValidInput, isDateSupported } from '@phoenixreisen/form';
+import {isValidInput, isDateSupported} from '@phoenixreisen/form';
 ```
 
 Formular deklarieren:
@@ -47,7 +48,7 @@ const form = {
 Form-Feld an ein bestimmtes HTML-Feld binden:
 
 ```html
-<input 
+<input
     type="text"
     placeholder="Beispiel..."
     value={form.surname.value()}
@@ -65,7 +66,7 @@ Bei Submit alles validieren lassen:
 ```js
 function submit(form) {
     if(!Form.isValidInput(form)) {
-        // bei invaliden Feldern wurde property "complaint" 
+        // bei invaliden Feldern wurde property "complaint"
         // auf true oder einen der ValidationTypes (string) gesetzt.
         return;
     }
@@ -77,6 +78,7 @@ function submit(form) {
 ## Deployment
 
 ```bash
+[npm install]                       # Abhängigkeiten installieren
 npm version [major|minor|patch]     # increase version x.x.x => major.minor.patch
 npm publish                         # upload to npm
 git push

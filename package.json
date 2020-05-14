@@ -3,9 +3,10 @@
   "version": "0.1.4",
   "description": "Wiederverwendbarer Stuff für reaktives Formularhandling",
   "main": "dist/form.js",
-  "module": "src/form.js",
+  "types": "dist/form.d.ts",
+  "module": "src/form.ts",
   "scripts": {
-    "compile": "del-cli ./dist && npx babel ./src/ --out-dir ./dist/",
+    "compile": "npx tsc --build tsconfig.json",
     "pretest": "npm run compile",
     "prepublish": "npm test",
     "test": "jasmine"
@@ -28,13 +29,19 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.8.7",
-    "@babel/plugin-transform-modules-commonjs": "^7.8.3",
-    "@babel/preset-env": "^7.8.7",
+    "@babel/core": "^7.9.6",
+    "@babel/plugin-transform-modules-commonjs": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@types/date-and-time": "^0.6.0",
+    "@types/iban": "0.0.30",
+    "@types/mithril": "^2.0.2",
+    "@types/validator": "^13.0.0",
     "del-cli": "^3.0.0",
     "jasmine": "^3.5.0",
     "jasmine-local-storage": "^1.1.1",
-    "jsdom": "^16.2.1",
-    "terser": "^4.6.7"
+    "jsdom": "^16.2.2",
+    "terser": "^4.6.13",
+    "tslib": "^2.0.0",
+    "typescript": "^3.9.2"
   }
 }

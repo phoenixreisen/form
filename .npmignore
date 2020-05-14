@@ -1,12 +1,13 @@
 .babelrc
 .hgignore
 .gitignore
-
+tsconfig.json
+test-setup.ts
 package-lock.json
 
 .hg/
 .git/
-spec/
-test/
-tests/
-node_modules/
+/spec/
+/test/
+/tests/
+/node_modules/
