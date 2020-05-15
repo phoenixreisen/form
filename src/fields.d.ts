@@ -14,7 +14,8 @@ export type Field<T> = {
     mirror?: Field<T>,
     required: boolean,
     complaint: boolean | ValidationTypes,
-    validate: (value: T) => void
+    validate: (value: T) => void,
+    [key: string]: any,
 };
 
 export type DateField = Field<string> & {
