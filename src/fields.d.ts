@@ -3,8 +3,6 @@ import stream from 'mithril/stream';
 
 //--- Types -----
 
-export type Input = string | boolean | number | null;
-
 export type Langs = Array<string>;
 
 export type Daterange = Array<Date>;
@@ -33,13 +31,13 @@ export interface DateConfig {
         en: string,
         [lang: string]: string,
     }
-    [lang: string]: any
+    [prop: string]: any
 }
 
 //--- Funktionen -----
 
-export type Hook = (input: Input, field: Field<any>) => any;
-export type DateFieldHook = (input: string, datelang?: string, daterange?: Daterange, field?: DateField) => any;
+export type Hook = (input: any, field: Field<any>) => any|void;
+export type DateFieldHook = (input: any, datelang?: string, daterange?: Daterange, field?: DateField) => any|void;
 
 export type FieldFactory = (required?: boolean, hook?: Hook) => Field<any>;
 export type DateFieldFactory = (required?: boolean, langs?: Langs, daterange?: Array<Date>, hook?: DateFieldHook) => DateField;

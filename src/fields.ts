@@ -8,7 +8,7 @@ import isIban from 'iban';
 
 //--- Helper -----
 
-const callHook = (input: Form.Input, field: Form.Field<any>, hook?: Form.Hook): any => {
+const callHook = (input: any, field: Form.Field<any>, hook?: Form.Hook): any => {
     const hooked = (hook && hook(input, field));
     return (hooked !== null && hooked !== undefined)
         ? hooked
