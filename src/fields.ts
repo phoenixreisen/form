@@ -28,15 +28,6 @@ export declare type Iban = Field<string> & {
     format: (e: HTMLInputElement) => void
 };
 
-export declare interface DateConfig {
-    patterns: {
-        de: string,
-        en: string,
-        [lang: string]: string,
-    }
-    [prop: string]: any
-}
-
 export declare type Hook = (input: any, field: Field<any>) => any|void;
 export declare type DateFieldHook = (input: any, datelang?: string, daterange?: Daterange, field?: DateField) => any|void;
 
@@ -123,7 +114,7 @@ export const date: DateFieldFactory = (required = true, langs=['de'], daterange,
         complaint: false,
         required: required,
         validate: (input: string = '', range = daterange) => {
-            const {patterns}: DateConfig = DateConfig;
+            const {patterns} = DateConfig;
             const {isValid, parse} = datetime;
             let datelang = '';
 
@@ -154,7 +145,7 @@ export const date: DateFieldFactory = (required = true, langs=['de'], daterange,
             date.value(input);
         },
         getDate: () => {
-            const {patterns}: DateConfig = DateConfig;
+            const {patterns} = DateConfig;
             for(const key of langs) {
                 if(datetime.isValid(date.value(), patterns[key])) {
                     return datetime.parse(date.value(), patterns[key]);

@@ -1,6 +1,15 @@
 //--- Konfig -----
 
-export const DateConfig = {
+export declare interface DateConfig {
+    patterns: {
+        de: string,
+        en: string,
+        [lang: string]: string,
+    }
+    [prop: string]: any
+}
+
+export const DateConfig: DateConfig = {
     patterns: {
         de: 'DD.MM.YYYY',
         en: 'YYYY-MM-DD',

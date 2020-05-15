@@ -11,6 +11,10 @@ export { 
 } from './functions';
 
 export {
+    Langs, Daterange,
+    Field, Hook, Iban,
+    DateField, DateFieldHook,
+    FieldFactory, DateFieldFactory,
     bookingnr, agencyid,
     gender, phone, email,
     text, int, date, time,
