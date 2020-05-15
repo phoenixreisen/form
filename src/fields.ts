@@ -3,12 +3,49 @@ import isEmail from 'validator/lib/isEmail';
 import isInt from 'validator/lib/isInt';
 import datetime from 'date-and-time';
 import stream from 'mithril/stream';
-import * as Form from './fields.d';
 import isIban from 'iban';
+
+//--- Types -----
+
+export declare type Langs = Array<string>;
+export declare type Daterange = Array<Date>;
+
+export declare type Field<T> = {
+    value: stream<T>,
+    mirror?: Field<T>,
+    required: boolean,
+    complaint: boolean | ValidationTypes,
+    validate: (value: T) => void,
+    [key: string]: any,
+};
+
+export declare type DateField = Field<string> & {
+    getDate(): Date | number | null
+    validate: (input: string, range?: Daterange) => void
+};
+
+export declare type Iban = Field<string> & {
+    format: (e: HTMLInputElement) => void
+};
+
+export declare interface DateConfig {
+    patterns: {
+        de: string,
+        en: string,
+        [lang: string]: string,
+    }
+    [prop: string]: any
+}
+
+export declare type Hook = (input: any, field: Field<any>) => any|void;
+export declare type DateFieldHook = (input: any, datelang?: string, daterange?: Daterange, field?: DateField) => any|void;
+
+export declare type FieldFactory = (required?: boolean, hook?: Hook) => Field<any>;
+export declare type DateFieldFactory = (required?: boolean, langs?: Langs, daterange?: Array<Date>, hook?: DateFieldHook) => DateField;
 
 //--- Helper -----
 
-const callHook = (input: any, field: Form.Field<any>, hook?: Form.Hook): any => {
+const callHook = (input: any, field: Field<any>, hook?: Hook): any => {
     const hooked = (hook && hook(input, field));
     return (hooked !== null && hooked !== undefined)
         ? hooked
@@ -17,8 +54,8 @@ const callHook = (input: any, field: Form.Field<any>, hook?: Form.Hook): any => 
 
 //--- Felder -----
 
-export const text: Form.FieldFactory = (required = true, hook) => {
-    const text: Form.Field<string> = {
+export const text: FieldFactory = (required = true, hook) => {
+    const text: Field<string> = {
         value: stream(),
         complaint: false,
         mirror: undefined,
@@ -38,8 +75,8 @@ export const text: Form.FieldFactory = (required = true, hook) => {
     return text;
 };
 
-export const int: Form.FieldFactory = (required = true, hook) => {
-    const int: Form.Field<string> = {
+export const int: FieldFactory = (required = true, hook) => {
+    const int: Field<string> = {
         value: stream(),
         complaint: false,
         required: required,
@@ -57,8 +94,8 @@ export const int: Form.FieldFactory = (required = true, hook) => {
     return int;
 };
 
-export const email: Form.FieldFactory = (required = true, hook) => {
-    const email: Form.Field<string> = {
+export const email: FieldFactory = (required = true, hook) => {
+    const email: Field<string> = {
         value: stream(),
         complaint: false,
         mirror: undefined,
@@ -80,13 +117,13 @@ export const email: Form.FieldFactory = (required = true, hook) => {
     return email;
 };
 
-export const date: Form.DateFieldFactory = (required = true, langs=['de'], daterange, hook) => {
-    const date: Form.DateField = {
+export const date: DateFieldFactory = (required = true, langs=['de'], daterange, hook) => {
+    const date: DateField = {
         value: stream(),
         complaint: false,
         required: required,
         validate: (input: string = '', range = daterange) => {
-            const {patterns}: Form.DateConfig = DateConfig;
+            const {patterns}: DateConfig = DateConfig;
             const {isValid, parse} = datetime;
             let datelang = '';
 
@@ -117,7 +154,7 @@ export const date: Form.DateFieldFactory = (required = true, langs=['de'], dater
             date.value(input);
         },
         getDate: () => {
-            const {patterns}: Form.DateConfig = DateConfig;
+            const {patterns}: DateConfig = DateConfig;
             for(const key of langs) {
                 if(datetime.isValid(date.value(), patterns[key])) {
                     return datetime.parse(date.value(), patterns[key]);
@@ -129,8 +166,8 @@ export const date: Form.DateFieldFactory = (required = true, langs=['de'], dater
     return date;
 };
 
-export const time: Form.FieldFactory = (required = true, hook) => {
-    const time: Form.Field<string> = {
+export const time: FieldFactory = (required = true, hook) => {
+    const time: Field<string> = {
         value: stream(),
         complaint: false,
         required: required,
@@ -149,8 +186,8 @@ export const time: Form.FieldFactory = (required = true, hook) => {
     return time;
 };
 
-export const gender: Form.FieldFactory = (required = true, hook) => {
-    const gender: Form.Field<string> = {
+export const gender: FieldFactory = (required = true, hook) => {
+    const gender: Field<string> = {
         value: stream(),
         complaint: false,
         required: required,
@@ -169,8 +206,8 @@ export const gender: Form.FieldFactory = (required = true, hook) => {
     return gender;
 };
 
-export const phone: Form.FieldFactory = (required = true, hook) => {
-    const phone: Form.Field<string> = {
+export const phone: FieldFactory = (required = true, hook) => {
+    const phone: Field<string> = {
         value: stream(),
         complaint: false,
         required: required,
@@ -186,8 +223,8 @@ export const phone: Form.FieldFactory = (required = true, hook) => {
     return phone;
 };
 
-export const radio: Form.FieldFactory = (required = true, hook) => {
-    const radio: Form.Field<boolean|null> = {
+export const radio: FieldFactory = (required = true, hook) => {
+    const radio: Field<boolean|null> = {
         value: stream(),
         complaint: false,
         required: required,
@@ -200,8 +237,8 @@ export const radio: Form.FieldFactory = (required = true, hook) => {
     return radio;
 };
 
-export const checkbox: Form.FieldFactory = (required = true, hook) => {
-    const checkbox: Form.Field<boolean> = {
+export const checkbox: FieldFactory = (required = true, hook) => {
+    const checkbox: Field<boolean> = {
         value: stream(),
         complaint: false,
         required: required,
@@ -215,8 +252,8 @@ export const checkbox: Form.FieldFactory = (required = true, hook) => {
     return checkbox;
 };
 
-export const bookingnr: Form.FieldFactory = (required = true, hook) => {
-    const bookingnr: Form.Field<string> = {
+export const bookingnr: FieldFactory = (required = true, hook) => {
+    const bookingnr: Field<string> = {
         value: stream(),
         complaint: false,
         required: required,
@@ -234,8 +271,8 @@ export const bookingnr: Form.FieldFactory = (required = true, hook) => {
     return bookingnr;
 };
 
-export const agencyid: Form.FieldFactory = (required = true, hook) => {
-    const agencyid: Form.Field<string> = {
+export const agencyid: FieldFactory = (required = true, hook) => {
+    const agencyid: Field<string> = {
         value: stream(),
         complaint: false,
         required: required,
@@ -253,8 +290,8 @@ export const agencyid: Form.FieldFactory = (required = true, hook) => {
     return agencyid;
 };
 
-export const iban: Form.FieldFactory = (required = true, hook) => {
-    const iban: Form.Iban = {
+export const iban: FieldFactory = (required = true, hook) => {
+    const iban: Iban = {
         value: stream(),
         complaint: false,
         required: required,

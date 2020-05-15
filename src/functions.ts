@@ -1,4 +1,4 @@
-import {Field} from './fields.d'
+import {Field} from './fields'
 
 //--- Funktionen -----
 
