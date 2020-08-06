@@ -17,7 +17,7 @@ describe("form handler - types & config", () => {
     afterEach(() => {});
 
     it('should provide certain UserTypes', () => {
-        const { UserTypes } = form;
+        const {UserTypes} = form;
         const keys = Object.keys(UserTypes);
         expect(keys.length).toBeGreaterThanOrEqual(4);
         expect(UserTypes.customer).toBeDefined();
@@ -27,7 +27,7 @@ describe("form handler - types & config", () => {
     });
 
     it('should provide certain ValidationTypes', () => {
-        const { ValidationTypes } = form;
+        const {ValidationTypes} = form;
         const keys = Object.keys(ValidationTypes);
         expect(keys.length).toBeGreaterThanOrEqual(4);
         expect(ValidationTypes.outOfRange).toBeDefined();
@@ -37,7 +37,7 @@ describe("form handler - types & config", () => {
     });
 
     it('should provide certain date patterns', () => {
-        const { DateConfig } = form;
+        const {DateConfig} = form;
         expect(DateConfig.patterns.de).toBeDefined();
         expect(DateConfig.patterns.en).toBeDefined();
     });
@@ -50,15 +50,15 @@ describe("form handler - functions", () => {
     });
 
     it('should exist', () => {
-        const { isValidInput, isDateSupported, getBtnStatusClass } = form;
+        const {isValidInput, isDateSupported, getBtnStatusClass} = form;
         expect(getBtnStatusClass).toBeDefined();
         expect(isDateSupported).toBeDefined();
         expect(isValidInput).toBeDefined();
     });
 
     it('should give the correct btn status class', () => {
-        const error = { failure: true, details: 'bla'};
-        const { getBtnStatusClass } = form;
+        const error = {failure: true, details: 'bla'};
+        const {getBtnStatusClass} = form;
         const succeeded = true;
         let btnClass = '';
 
@@ -70,13 +70,13 @@ describe("form handler - functions", () => {
 
     it('should tell if native datepicker is supported', () => {
         // jsdom unterstützt Felder vom Typ "date".
-        const { isDateSupported } = form;
+        const {isDateSupported} = form;
         const isSupported = isDateSupported();
         expect(isSupported).toBeTruthy();
     });
 
     it('should fire & check the fields validation correctly', () => {
-        const { int, text, isValidInput } = form;
+        const {int, text, isValidInput} = form;
         let isValid = false;
 
         const fields = {
@@ -110,7 +110,7 @@ describe("form handler - field check", () => {
     afterEach(() => {});
 
     it('should handle & validate booking numbers correctly', () => {
-        const { ValidationTypes, bookingnr } = form;
+        const {ValidationTypes, bookingnr} = form;
         let field = bookingnr();
 
         field.validate('');
@@ -144,7 +144,7 @@ describe("form handler - field check", () => {
     });
 
     it('should handle & validate agency numbers correctly', () => {
-        const {  ValidationTypes, agencyid } = form;
+        const {ValidationTypes, agencyid} = form;
         let field = agencyid();
 
         field.validate('');
@@ -178,7 +178,7 @@ describe("form handler - field check", () => {
     });
 
     it('should handle & validate genders correctly', () => {
-        const {  ValidationTypes, gender } = form;
+        const {ValidationTypes, gender} = form;
         let field = gender();
 
         field.validate('');
@@ -207,9 +207,13 @@ describe("form handler - field check", () => {
     });
 
     it('should handle & validate phone numbers correctly', () => {
-        const { phone } = form;
+        const {phone} = form;
         let field = phone(true);    // pflicht
         let field2 = phone(false);  // optional
+
+        field.validate('b');
+        expect(field.value()).toBe('');
+        expect(field.complaint).toBe(false);
 
         field.validate('');
         expect(field.value()).toBe('');
@@ -229,7 +233,7 @@ describe("form handler - field check", () => {
     });
 
     it('should handle & validate emails correctly', () => {
-        const { email, ValidationTypes } = form;
+        const {email, ValidationTypes} = form;
         let field = email(true);    // pflicht
         let field2 = email(false);  // optional
 
@@ -275,7 +279,7 @@ describe("form handler - field check", () => {
     });
 
     it('should handle undetermined text input correctly', () => {
-        const { text, ValidationTypes } = form;
+        const {text, ValidationTypes} = form;
         let field = text(true);
         let field2 = text(false);
 
@@ -300,7 +304,7 @@ describe("form handler - field check", () => {
     });
 
     it('should handle & validate integers correctly', () => {
-        const { int, ValidationTypes } = form;
+        const {int, ValidationTypes} = form;
         let field = int();
 
         field.validate('');
@@ -317,7 +321,7 @@ describe("form handler - field check", () => {
     });
 
     it('should handle & validate german date inputs correctly', () => {
-        const { date, ValidationTypes } = form;
+        const {date, ValidationTypes} = form;
         let field = date(true, ['de']);
 
         field.validate('');
@@ -343,8 +347,8 @@ describe("form handler - field check", () => {
 
     it('should handle & validate datepicker dates correctly', () => {
         const required = true;
-        const { addDays, format } = datetime;
-        const { date, ValidationTypes } = form;
+        const {addDays, format} = datetime;
+        const {date, ValidationTypes} = form;
         let rangeField = date(required, ['de'], [new Date(), addDays(new Date, 5)]);
         let field = date(required, ['de', 'en']);
         let field2 = date(!required, ['de']);
@@ -383,7 +387,7 @@ describe("form handler - field check", () => {
     });
 
     it('should handle & validate time inputs correctly', () => {
-        const { time, ValidationTypes } = form;
+        const {time, ValidationTypes} = form;
         let field = time();
 
         field.validate('');
@@ -404,7 +408,7 @@ describe("form handler - field check", () => {
     });
 
     it('should handle & validate radio buttons correctly', () => {
-        const { radio } = form;
+        const {radio} = form;
         let field = radio();
 
         field.validate(null);
@@ -417,7 +421,7 @@ describe("form handler - field check", () => {
     });
 
     it('should handle & validate checkboxes correctly', () => {
-        const { checkbox, ValidationTypes } = form;
+        const {checkbox} = form;
         let field = checkbox();
 
         field.validate(null);
@@ -430,7 +434,7 @@ describe("form handler - field check", () => {
     });
 
     it('should handle & validate ibans correctly', () => {
-        const { iban, ValidationTypes } = form;
+        const {iban, ValidationTypes} = form;
         let field = iban();
 
         field.validate('');

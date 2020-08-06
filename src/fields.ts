@@ -47,7 +47,7 @@ const callHook = (input: any, field: Field<any>, hook?: Hook): any => {
 
 export const text: FieldFactory = (required = true, hook) => {
     const text: Field<string> = {
-        value: stream(),
+        value: stream(''),
         complaint: false,
         mirror: undefined,
         required: required,
@@ -68,7 +68,7 @@ export const text: FieldFactory = (required = true, hook) => {
 
 export const int: FieldFactory = (required = true, hook) => {
     const int: Field<string> = {
-        value: stream(),
+        value: stream(''),
         complaint: false,
         required: required,
         validate: (input: string = '') => {
@@ -87,7 +87,7 @@ export const int: FieldFactory = (required = true, hook) => {
 
 export const email: FieldFactory = (required = true, hook) => {
     const email: Field<string> = {
-        value: stream(),
+        value: stream(''),
         complaint: false,
         mirror: undefined,
         required: required,
@@ -110,7 +110,7 @@ export const email: FieldFactory = (required = true, hook) => {
 
 export const date: DateFieldFactory = (required = true, langs=['de'], daterange, hook) => {
     const date: DateField = {
-        value: stream(),
+        value: stream(''),
         complaint: false,
         required: required,
         validate: (input: string = '', range = daterange) => {
@@ -159,7 +159,7 @@ export const date: DateFieldFactory = (required = true, langs=['de'], daterange,
 
 export const time: FieldFactory = (required = true, hook) => {
     const time: Field<string> = {
-        value: stream(),
+        value: stream(''),
         complaint: false,
         required: required,
         validate: (input: string = '') => {
@@ -179,7 +179,7 @@ export const time: FieldFactory = (required = true, hook) => {
 
 export const gender: FieldFactory = (required = true, hook) => {
     const gender: Field<string> = {
-        value: stream(),
+        value: stream(''),
         complaint: false,
         required: required,
         validate: (input: string = '') => {
@@ -199,7 +199,7 @@ export const gender: FieldFactory = (required = true, hook) => {
 
 export const phone: FieldFactory = (required = true, hook) => {
     const phone: Field<string> = {
-        value: stream(),
+        value: stream(''),
         complaint: false,
         required: required,
         validate: (input: string = '') => {
@@ -220,7 +220,8 @@ export const radio: FieldFactory = (required = true, hook) => {
         complaint: false,
         required: required,
         validate: (input = null) => {
-            radio.complaint = (input === null && radio.required);
+            const isNotClicked = (input === null || input === undefined);
+            radio.complaint = (isNotClicked && radio.required);
             input = callHook(input, radio, hook);
             radio.value(input);
         },
@@ -245,7 +246,7 @@ export const checkbox: FieldFactory = (required = true, hook) => {
 
 export const bookingnr: FieldFactory = (required = true, hook) => {
     const bookingnr: Field<string> = {
-        value: stream(),
+        value: stream(''),
         complaint: false,
         required: required,
         validate: (input: string = '') => {
@@ -264,7 +265,7 @@ export const bookingnr: FieldFactory = (required = true, hook) => {
 
 export const agencyid: FieldFactory = (required = true, hook) => {
     const agencyid: Field<string> = {
-        value: stream(),
+        value: stream(''),
         complaint: false,
         required: required,
         validate: (input: string = '') => {
@@ -283,7 +284,7 @@ export const agencyid: FieldFactory = (required = true, hook) => {
 
 export const iban: FieldFactory = (required = true, hook) => {
     const iban: Iban = {
-        value: stream(),
+        value: stream(''),
         complaint: false,
         required: required,
         validate: (input: string = '') => {
