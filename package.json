@@ -22,22 +22,22 @@
   "license": "MIT",
   "homepage": "https://design-system.phoenixreisen.net",
   "dependencies": {
-    "date-and-time": "^0.13.1",
+    "date-and-time": "^0.14.0",
     "iban": "0.0.14",
     "mithril": "^2.0.4",
-    "validator": "^13.0.0"
+    "validator": "^13.1.1"
   },
   "devDependencies": {
-    "@types/date-and-time": "^0.6.0",
+    "@types/date-and-time": "^0.13.0",
     "@types/iban": "0.0.30",
-    "@types/mithril": "^2.0.2",
-    "@types/validator": "^13.0.0",
-    "del-cli": "^3.0.0",
-    "jasmine": "^3.5.0",
+    "@types/mithril": "^2.0.3",
+    "@types/validator": "^13.1.0",
+    "del-cli": "^3.0.1",
+    "jasmine": "^3.6.1",
     "jasmine-local-storage": "^1.1.1",
-    "jsdom": "^16.2.2",
-    "terser": "^4.6.13",
-    "tslib": "^2.0.0",
-    "typescript": "^3.9.2"
+    "jsdom": "^16.4.0",
+    "terser": "^5.0.0",
+    "tslib": "^2.0.1",
+    "typescript": "^3.9.7"
   }
 }
