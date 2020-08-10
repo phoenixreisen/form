@@ -197,6 +197,11 @@ describe("form handler - field check", () => {
         expect(field.value()).toBe('weiblich');
         expect(field.complaint).toBe(false);
 
+        // Groß- und Kleinschreibung ist egal.
+        field.validate('Herr');
+        expect(field.value()).toBe('Herr');
+        expect(field.complaint).toBe(false);
+
         // --- Hook
         field = gender(true, (input) => {
             input = 'divers';

@@ -186,7 +186,7 @@ export const gender: FieldFactory = (required = true, hook) => {
             const types = ['herr', 'frau', 'maenlich', 'maennlich', 'weiblich', 'divers'];
             gender.complaint = (!input.trim() && gender.required)
                 ? gender.complaint = ValidationTypes.empty
-                : (input.trim() && !types.includes(input))
+                : (input.trim() && !types.includes(input.toLowerCase()))
                     ? ValidationTypes.invalid
                     : false;
 
