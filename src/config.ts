@@ -39,5 +39,6 @@ export enum ValidationTypes {
     empty = 'empty',
     invalid = 'invalid',
     notequal = 'not-equal',
+    notunique = 'not-unique',
     outOfRange = 'out-of-range',
 };
