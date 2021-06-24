@@ -220,6 +220,23 @@ describe("form handler - field check", () => {
         expect(field.value()).toBe('');
         expect(field.complaint).toBe(false);
 
+        field.validate(' ');
+        expect(field.value()).toBe(' ');
+        expect(field.complaint).toBe(true);
+
+        field.validate('0228 1234');
+        expect(field.value()).toBe('0228 1234');
+        expect(field.complaint).toBe(false);
+
+        field.validate('0228/1234');
+        expect(field.value()).toBe('0228/1234');
+        expect(field.complaint).toBe(false);
+
+        field.validate('');
+        field.validate('0228_1234');
+        expect(field.value()).toBe('');
+        expect(field.complaint).toBe(true);
+
         field.validate('');
         expect(field.value()).toBe('');
         expect(field.complaint).toBe(true);
