@@ -204,7 +204,7 @@ export const phone: FieldFactory = (required = true, hook) => {
         required: required,
         validate: (input: string = '') => {
             // wenn es keine Ziffer ist, verwerfe es.
-            if(!input.trim() || input.match(/^[0-9\ \/+-]+$/)) {
+            if(!input.trim() || input.match(/^[0-9 /+-]+$/)) {
                 phone.complaint = (!input.trim() && phone.required);
                 input = callHook(input, phone, hook);
                 phone.value(input);
