@@ -7,7 +7,7 @@
   "module": "src/form.ts",
   "scripts": {
     "compile": "npx tsc --build tsconfig.json",
-    "pretest": "del-cli ./dist && npm run compile",
+    "pretest": "rm -rf ./dist && npm run compile",
     "prepublish": "npm test",
     "test": "jasmine"
   },
@@ -32,7 +32,6 @@
     "@types/iban": "^0.0.32",
     "@types/mithril": "^2.0.3",
     "@types/validator": "^13.1.0",
-    "del-cli": "^4.0.0",
     "jasmine": "^3.6.1",
     "jasmine-local-storage": "^1.1.1",
     "jsdom": "^16.4.0",
