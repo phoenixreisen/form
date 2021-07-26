@@ -7,29 +7,34 @@ import isIban from 'iban';
 
 //--- Types -----
 
-export declare type Langs = Array<string>;
-export declare type Daterange = Array<Date>;
-
-export declare type Field<T> = {
+declare type AbstractField<T> = {
     value: stream<T>,
     mirror?: Field<T>,
     required: boolean,
     complaint: boolean | ValidationTypes,
-    validate: (value: T) => void,
+    rules?: {[key: string]: RegExp | {[key: string]: RegExp}}
+}
+
+export declare type Langs = Array<string>;
+export declare type Daterange = Array<Date>;
+
+export declare type Field<T> = AbstractField<T> & {
+    validate: (value: T, rule?: RegExp) => void,
     [key: string]: any,
 };
 
-export declare type DateField = Field<string> & {
+export declare type Iban = AbstractField<string> & {
+    format: (e: HTMLInputElement) => void
+    validate: (value: string) => void,
+};
+
+export declare type DateField = AbstractField<string> & {
     getDate(): Date | number | null
     validate: (input: string, range?: Daterange) => void
 };
 
-export declare type Iban = Field<string> & {
-    format: (e: HTMLInputElement) => void
-};
-
-export declare type Hook = (input: any, field: Field<any>) => any|void;
-export declare type DateFieldHook = (input: any, datelang?: string, daterange?: Daterange, field?: DateField) => any|void;
+export declare type Hook = (input: any, field: Field<any>) => string|void;
+export declare type DateFieldHook = (input: any, datelang?: string, daterange?: Daterange, field?: DateField) => string|void;
 
 export declare type FieldFactory = (required?: boolean, hook?: Hook) => Field<any>;
 export declare type DateFieldFactory = (required?: boolean, langs?: Langs, daterange?: Array<Date>, hook?: DateFieldHook) => DateField;
@@ -51,7 +56,7 @@ export const text: FieldFactory = (required = true, hook) => {
         complaint: false,
         mirror: undefined,
         required: required,
-        validate: (input: string = '') => {
+        validate: (input = '') => {
             const {mirror} = text;
             text.complaint = (!input.trim() && text.required)
                 ? ValidationTypes.empty
@@ -71,7 +76,7 @@ export const int: FieldFactory = (required = true, hook) => {
         value: stream(''),
         complaint: false,
         required: required,
-        validate: (input: string = '') => {
+        validate: (input = '') => {
             int.complaint = (!input.trim() && int.required)
                 ? ValidationTypes.empty
                 : (input && !isInt(input))
@@ -91,7 +96,7 @@ export const email: FieldFactory = (required = true, hook) => {
         complaint: false,
         mirror: undefined,
         required: required,
-        validate: (input: string = '') => {
+        validate: (input = '') => {
             const {mirror} = email;
             email.complaint = (!input.trim() && email.required)
                 ? ValidationTypes.empty
@@ -113,7 +118,7 @@ export const date: DateFieldFactory = (required = true, langs=['de'], daterange,
         value: stream(''),
         complaint: false,
         required: required,
-        validate: (input: string = '', range = daterange) => {
+        validate: (input = '', range = daterange) => {
             const {patterns} = DateConfig;
             const {isValid, parse} = datetime;
             let datelang = '';
@@ -141,7 +146,7 @@ export const date: DateFieldFactory = (required = true, langs=['de'], daterange,
                     date.complaint = ValidationTypes.outOfRange;
                 }
             }
-            input = (hook && hook(input, datelang, range, date)) || input;
+            input = (hook && hook(input, datelang, range, date)) as string || input;
             date.value(input);
         },
         getDate: () => {
@@ -162,7 +167,7 @@ export const time: FieldFactory = (required = true, hook) => {
         value: stream(''),
         complaint: false,
         required: required,
-        validate: (input: string = '') => {
+        validate: (input = '') => {
             const {isValid} = datetime;
             time.complaint = (!input.trim() && time.required)
                 ? ValidationTypes.empty
@@ -182,11 +187,11 @@ export const gender: FieldFactory = (required = true, hook) => {
         value: stream(''),
         complaint: false,
         required: required,
-        validate: (input: string = '') => {
+        validate: (input = '') => {
             const types = ['herr', 'frau', 'maenlich', 'maennlich', 'weiblich', 'divers'];
             gender.complaint = (!input.trim() && gender.required)
                 ? gender.complaint = ValidationTypes.empty
-                : (input.trim() && !types.includes(input.toLowerCase()))
+                : (input.trim() && !types.filter((item) => (item === input.toLowerCase())).length)
                     ? ValidationTypes.invalid
                     : false;
 
@@ -198,14 +203,25 @@ export const gender: FieldFactory = (required = true, hook) => {
 };
 
 export const phone: FieldFactory = (required = true, hook) => {
+    const rules = {
+        phone: {
+            complete: /^[0-9 /+-]+$/,
+            arealess: /^[1-9 -]+$/
+        },
+        area: /^\+[0-9-]{2,7}$/,
+    };
     const phone: Field<string> = {
-        value: stream(''),
+        rules: rules,
         complaint: false,
+        value: stream(''),
         required: required,
-        validate: (input: string = '') => {
-            // wenn es keine Ziffer ist, verwerfe es.
-            if(!input.trim() || input.match(/^[0-9 /+-]+$/)) {
-                phone.complaint = (!input.trim() && phone.required);
+        validate: (input = '', rule = rules.phone.complete) => {
+            // wenn es nicht der Regel entspricht, verwerfe es.
+            if(!input.trim() || input.match(rule)) {
+                phone.complaint = (
+                    (!input.trim().length && phone.required) ||
+                    ((input.trim().length > 0) && !input.match(rule))
+                );
                 input = callHook(input, phone, hook);
                 phone.value(input);
             }
@@ -234,7 +250,7 @@ export const checkbox: FieldFactory = (required = true, hook) => {
         value: stream(),
         complaint: false,
         required: required,
-        validate: (input: boolean = false) => {
+        validate: (input = false) => {
             const checked = input ? true : false;
             checkbox.complaint = (!checked && checkbox.required);
             input = callHook(input, checkbox, hook);
@@ -249,7 +265,7 @@ export const bookingnr: FieldFactory = (required = true, hook) => {
         value: stream(''),
         complaint: false,
         required: required,
-        validate: (input: string = '') => {
+        validate: (input = '') => {
             bookingnr.complaint = (!input.trim() && bookingnr.required)
                 ? ValidationTypes.empty
                 : (input && (!isInt(input) || input.length !== 6))
@@ -268,7 +284,7 @@ export const agencyid: FieldFactory = (required = true, hook) => {
         value: stream(''),
         complaint: false,
         required: required,
-        validate: (input: string = '') => {
+        validate: (input = '') => {
             agencyid.complaint = (!input.trim() && agencyid.required)
                 ? ValidationTypes.empty
                 : (input.trim() && (!isInt(input) || input.length !== 6))
@@ -287,7 +303,7 @@ export const iban: FieldFactory = (required = true, hook) => {
         value: stream(''),
         complaint: false,
         required: required,
-        validate: (input: string = '') => {
+        validate: (input = '') => {
             iban.complaint = (iban.required && !input.trim())
                 ? ValidationTypes.empty
                 : (input.trim() && !isIban.isValid(input))

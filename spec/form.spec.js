@@ -252,6 +252,29 @@ describe("form handler - field check", () => {
         // --- Pflichtprüfung
         field2.validate('');
         expect(field2.complaint).toBe(false);
+
+        // --- Vorwahl
+        field2.value('');
+
+        field2.validate('4+49', field2.rules.area);
+        expect(field2.value()).toBe('');
+        expect(field2.complaint).toBe(false);
+
+        field2.validate('+49ffe', field2.rules.area);
+        expect(field2.value()).toBe('');
+        expect(field2.complaint).toBe(false);
+
+        field2.validate('fwfw+49', field2.rules.area);
+        expect(field2.value()).toBe('');
+        expect(field2.complaint).toBe(false);
+
+        field2.validate('+49', field2.rules.area);
+        expect(field2.value()).toBe('+49');
+        expect(field2.complaint).toBe(false);
+
+        field2.validate('+49-123', field2.rules.area);
+        expect(field2.value()).toBe('+49-123');
+        expect(field2.complaint).toBe(false);
     });
 
     it('should handle & validate emails correctly', () => {
