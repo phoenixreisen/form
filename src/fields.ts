@@ -11,8 +11,8 @@ declare type AbstractField<T> = {
     value: stream<T>,
     mirror?: Field<T>,
     required: boolean,
+    rules?: {[key: string]: RegExp},
     complaint: boolean | ValidationTypes,
-    rules?: {[key: string]: RegExp | {[key: string]: RegExp}}
 }
 
 export declare type Langs = Array<string>;
@@ -204,10 +204,8 @@ export const gender: FieldFactory = (required = true, hook) => {
 
 export const phone: FieldFactory = (required = true, hook) => {
     const rules = {
-        phone: {
-            complete: /^[0-9 /+-]+$/,
-            arealess: /^[1-9 -]+$/
-        },
+        complete: /^[0-9 /+-]+$/,
+        arealess: /^[1-9 -]+$/,
         area: /^\+[0-9-]{2,7}$/,
     };
     const phone: Field<string> = {
@@ -215,7 +213,7 @@ export const phone: FieldFactory = (required = true, hook) => {
         complaint: false,
         value: stream(''),
         required: required,
-        validate: (input = '', rule = rules.phone.complete) => {
+        validate: (input = '', rule = rules.complete) => {
             // wenn es nicht der Regel entspricht, verwerfe es.
             if(!input.trim() || input.match(rule)) {
                 phone.complaint = (
