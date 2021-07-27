@@ -1,3 +1,4 @@
+const {ValidationRules} = require('../dist/config.js');
 const datetime = require('date-and-time');
 const form = require('../dist/form.js');
 const jsdom = require('jsdom');
@@ -215,6 +216,7 @@ describe("form handler - field check", () => {
         const {phone} = form;
         let field = phone(true);    // pflicht
         let field2 = phone(false);  // optional
+        let field3 = phone(false, null, ValidationRules.area); // mit anderer Validierung
 
         field.validate('b');
         expect(field.value()).toBe('');
@@ -254,27 +256,27 @@ describe("form handler - field check", () => {
         expect(field2.complaint).toBe(false);
 
         // --- Vorwahl
-        field2.value('');
+        field3.value('');
 
-        field2.validate('4+49', field2.rules.area);
-        expect(field2.value()).toBe('');
-        expect(field2.complaint).toBe(false);
+        field3.validate('4+49');
+        expect(field3.value()).toBe('');
+        expect(field3.complaint).toBe(false);
 
-        field2.validate('+49ffe', field2.rules.area);
-        expect(field2.value()).toBe('');
-        expect(field2.complaint).toBe(false);
+        field3.validate('+49ffe');
+        expect(field3.value()).toBe('');
+        expect(field3.complaint).toBe(false);
 
-        field2.validate('fwfw+49', field2.rules.area);
-        expect(field2.value()).toBe('');
-        expect(field2.complaint).toBe(false);
+        field3.validate('fwfw+49');
+        expect(field3.value()).toBe('');
+        expect(field3.complaint).toBe(false);
 
-        field2.validate('+49', field2.rules.area);
-        expect(field2.value()).toBe('+49');
-        expect(field2.complaint).toBe(false);
+        field3.validate('+49');
+        expect(field3.value()).toBe('+49');
+        expect(field3.complaint).toBe(false);
 
-        field2.validate('+49-123', field2.rules.area);
-        expect(field2.value()).toBe('+49-123');
-        expect(field2.complaint).toBe(false);
+        field3.validate('+49-123');
+        expect(field3.value()).toBe('+49-123');
+        expect(field3.complaint).toBe(false);
     });
 
     it('should handle & validate emails correctly', () => {

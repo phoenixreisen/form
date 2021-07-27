@@ -1,4 +1,4 @@
-import {ValidationTypes, DateConfig} from './config';
+import {ValidationTypes, DateConfig, ValidationRules} from './config';
 import isEmail from 'validator/lib/isEmail';
 import isInt from 'validator/lib/isInt';
 import datetime from 'date-and-time';
@@ -19,7 +19,7 @@ export declare type Langs = Array<string>;
 export declare type Daterange = Array<Date>;
 
 export declare type Field<T> = AbstractField<T> & {
-    validate: (value: T, rule?: RegExp) => void,
+    validate: (value: T, exp?: RegExp) => void,
     [key: string]: any,
 };
 
@@ -36,7 +36,7 @@ export declare type DateField = AbstractField<string> & {
 export declare type Hook = (input: any, field: Field<any>) => string|void;
 export declare type DateFieldHook = (input: any, datelang?: string, daterange?: Daterange, field?: DateField) => string|void;
 
-export declare type FieldFactory = (required?: boolean, hook?: Hook) => Field<any>;
+export declare type FieldFactory = (required?: boolean, hook?: Hook, rule?: RegExp) => Field<any>;
 export declare type DateFieldFactory = (required?: boolean, langs?: Langs, daterange?: Array<Date>, hook?: DateFieldHook) => DateField;
 
 //--- Helper -----
@@ -202,23 +202,17 @@ export const gender: FieldFactory = (required = true, hook) => {
     return gender;
 };
 
-export const phone: FieldFactory = (required = true, hook) => {
-    const rules = {
-        complete: /^[0-9 /+-]+$/,
-        arealess: /^[1-9 -]+$/,
-        area: /^\+[0-9-]{2,7}$/,
-    };
+export const phone: FieldFactory = (required = true, hook = undefined, rule = ValidationRules.complete) => {
     const phone: Field<string> = {
-        rules: rules,
-        complaint: false,
         value: stream(''),
+        complaint: false,
         required: required,
-        validate: (input = '', rule = rules.complete) => {
+        validate: (input = '', exp = rule) => {
             // wenn es nicht der Regel entspricht, verwerfe es.
-            if(!input.trim() || input.match(rule)) {
+            if(!input.trim() || input.match(exp)) {
                 phone.complaint = (
                     (!input.trim().length && phone.required) ||
-                    ((input.trim().length > 0) && !input.match(rule))
+                    ((input.trim().length > 0) && !input.match(exp))
                 );
                 input = callHook(input, phone, hook);
                 phone.value(input);

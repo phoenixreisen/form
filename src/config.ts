@@ -26,7 +26,7 @@ export const DateConfig: DateConfig = {
     },
 };
 
-//--- Enums -----
+//--- Enums & Objects -----
 
 export enum UserTypes {
     agency = 'agency',
@@ -41,4 +41,10 @@ export enum ValidationTypes {
     notequal = 'not-equal',
     notunique = 'not-unique',
     outOfRange = 'out-of-range',
+};
+
+export const ValidationRules = {
+    complete: /^[0-9 /+-]+$/,
+    arealess: /^[1-9 -]+$/,
+    area: /^\+[0-9-]{2,7}$/,
 };
