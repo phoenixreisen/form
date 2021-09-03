@@ -1,4 +1,4 @@
-import {Field} from './fields'
+import {DateField, Field} from './fields'
 
 //--- Funktionen -----
 
@@ -17,7 +17,7 @@ export function getBtnStatusClass(success: boolean, error: Error | boolean): str
   * Ruft die validate()-Funktionen aller Felder auf und prüft anschließend,
   * ob alle valide sind. Gut, um ein ganzes Formular vor Submit zu prüfen.
   */
-export function isValidInput(fields: {[name: string]: Field<any>}): boolean {
+export function isValidInput(fields: {[name: string]: Field<any>|DateField}): boolean {
     let hasErrors = false;
     const fieldnames: Array<string> = Object.keys(fields);
     for(let i=0; i < fieldnames.length; i+=1) {
