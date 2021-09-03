@@ -22,7 +22,7 @@
   "license": "MIT",
   "homepage": "https://design-system.phoenixreisen.net",
   "dependencies": {
-    "date-and-time": "^1.0.0",
+    "date-and-time": "^1.0.1",
     "iban": "0.0.14",
     "mithril": "^2.0.4",
     "validator": "^13.1.1"
@@ -34,7 +34,7 @@
     "@types/validator": "^13.1.0",
     "jasmine": "^3.6.1",
     "jasmine-local-storage": "^1.1.1",
-    "jsdom": "^16.4.0",
+    "jsdom": "^17.0.0",
     "terser": "^5.0.0",
     "tslib": "^2.0.1",
     "typescript": "^4.2.4"
