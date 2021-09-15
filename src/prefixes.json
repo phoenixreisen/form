@@ -1,0 +1,1962 @@
+[
+    {
+        "img": "https://www.lexasdata.com/mf/abu_dhabi.gif",
+        "name": "Abu Dhabi",
+        "prefix": {
+            "string": "+9712",
+            "number": 9712
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/af-flag.gif",
+        "name": "Afghanistan",
+        "prefix": {
+            "string": "+93",
+            "number": 93
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/eg-flag.gif",
+        "name": "Ägypten",
+        "prefix": {
+            "string": "+20",
+            "number": 20
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/al-flag.gif",
+        "name": "Albanien",
+        "prefix": {
+            "string": "+355",
+            "number": 355
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ag-flag.gif",
+        "name": "Algerien",
+        "prefix": {
+            "string": "+213",
+            "number": 213
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/vq-flag.gif",
+        "name": "Amerikanische Jungferninseln",
+        "prefix": {
+            "string": "+1340",
+            "number": 1340
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/aq-flag.gif",
+        "name": "Amerikanisch-Samoa",
+        "prefix": {
+            "string": "+1684",
+            "number": 1684
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/an-flag.gif",
+        "name": "Andorra",
+        "prefix": {
+            "string": "+376",
+            "number": 376
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ao-flag.gif",
+        "name": "Angola",
+        "prefix": {
+            "string": "+244",
+            "number": 244
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/av-flag.gif",
+        "name": "Anguilla",
+        "prefix": {
+            "string": "+1264",
+            "number": 1264
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ac-flag.gif",
+        "name": "Antigua und Barbuda",
+        "prefix": {
+            "string": "+1268",
+            "number": 1268
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ek-flag.gif",
+        "name": "Äquatorialguinea",
+        "prefix": {
+            "string": "+240",
+            "number": 240
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ar-flag.gif",
+        "name": "Argentinien",
+        "prefix": {
+            "string": "+54",
+            "number": 54
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/am-flag.gif",
+        "name": "Armenien",
+        "prefix": {
+            "string": "+374",
+            "number": 374
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/aa-flag.gif",
+        "name": "Aruba",
+        "prefix": {
+            "string": "+297",
+            "number": 297
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/aj-flag.gif",
+        "name": "Aserbaidschan",
+        "prefix": {
+            "string": "+994",
+            "number": 994
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/et-flag.gif",
+        "name": "Äthiopien",
+        "prefix": {
+            "string": "+251",
+            "number": 251
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/as-flag.gif",
+        "name": "Australien",
+        "prefix": {
+            "string": "+61",
+            "number": 61
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/bf-flag.gif",
+        "name": "Bahamas",
+        "prefix": {
+            "string": "+1242",
+            "number": 1242
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ba-flag.gif",
+        "name": "Bahrain",
+        "prefix": {
+            "string": "+973",
+            "number": 973
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/bg-flag.gif",
+        "name": "Bangladesch",
+        "prefix": {
+            "string": "+880",
+            "number": 880
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/bb-flag.gif",
+        "name": "Barbados",
+        "prefix": {
+            "string": "+1246",
+            "number": 1246
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/bo-flag.gif",
+        "name": "Belarus",
+        "prefix": {
+            "string": "+375",
+            "number": 375
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/be-flag.gif",
+        "name": "Belgien",
+        "prefix": {
+            "string": "+32",
+            "number": 32
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/bh-flag.gif",
+        "name": "Belize",
+        "prefix": {
+            "string": "+501",
+            "number": 501
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/bn-flag.gif",
+        "name": "Benin",
+        "prefix": {
+            "string": "+229",
+            "number": 229
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/bd-flag.gif",
+        "name": "Bermuda",
+        "prefix": {
+            "string": "+1441",
+            "number": 1441
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/bt-flag.gif",
+        "name": "Bhutan",
+        "prefix": {
+            "string": "+975",
+            "number": 975
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/bl-flag.gif",
+        "name": "Bolivien",
+        "prefix": {
+            "string": "+591",
+            "number": 591
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/bonaire.jpg",
+        "name": "Bonaire",
+        "prefix": {
+            "string": "+599",
+            "number": 599
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/bk-flag.gif",
+        "name": "Bosnien und Herzegowina",
+        "prefix": {
+            "string": "+387",
+            "number": 387
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/bc-flag.gif",
+        "name": "Botsuana",
+        "prefix": {
+            "string": "+267",
+            "number": 267
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/br-flag.gif",
+        "name": "Brasilien",
+        "prefix": {
+            "string": "+55",
+            "number": 55
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/vi-flag.gif",
+        "name": "Britische Jungferninseln",
+        "prefix": {
+            "string": "+1284",
+            "number": 1284
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/bx-flag.gif",
+        "name": "Brunei Darussalam",
+        "prefix": {
+            "string": "+673",
+            "number": 673
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/bu-flag.gif",
+        "name": "Bulgarien",
+        "prefix": {
+            "string": "+359",
+            "number": 359
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/uv-flag.gif",
+        "name": "Burkina Faso",
+        "prefix": {
+            "string": "+226",
+            "number": 226
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/by-flag.gif",
+        "name": "Burundi",
+        "prefix": {
+            "string": "+257",
+            "number": 257
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/cv-flag.gif",
+        "name": "Cabo Verde",
+        "prefix": {
+            "string": "+238",
+            "number": 238
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ci-flag.gif",
+        "name": "Chile",
+        "prefix": {
+            "string": "+56",
+            "number": 56
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ch-flag.gif",
+        "name": "China",
+        "prefix": {
+            "string": "+86",
+            "number": 86
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/cw-flag.gif",
+        "name": "Cookinseln",
+        "prefix": {
+            "string": "+682",
+            "number": 682
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/cs-flag.gif",
+        "name": "Costa Rica",
+        "prefix": {
+            "string": "+506",
+            "number": 506
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/iv-flag.gif",
+        "name": "Côte d'Ivoire",
+        "prefix": {
+            "string": "+225",
+            "number": 225
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/curacao.gif",
+        "name": "Curaçao",
+        "prefix": {
+            "string": "+5999",
+            "number": 5999
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/da-flag.gif",
+        "name": "Dänemark",
+        "prefix": {
+            "string": "+45",
+            "number": 45
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/gm-flag.gif",
+        "name": "Deutschland",
+        "prefix": {
+            "string": "+49",
+            "number": 49
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/do-flag.gif",
+        "name": "Dominica",
+        "prefix": {
+            "string": "+1767",
+            "number": 1767
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/dr-flag.gif",
+        "name": "Dominikanische Republik",
+        "prefix": {
+            "string": "+1809,",
+            "number": 1809
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/dj-flag.gif",
+        "name": "Dschibuti",
+        "prefix": {
+            "string": "+253",
+            "number": 253
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/dubai.gif",
+        "name": "Dubai",
+        "prefix": {
+            "string": "+9714",
+            "number": 9714
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ec-flag.gif",
+        "name": "Ecuador",
+        "prefix": {
+            "string": "+593",
+            "number": 593
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/es-flag.gif",
+        "name": "El Salvador",
+        "prefix": {
+            "string": "+503",
+            "number": 503
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/er-flag.gif",
+        "name": "Eritrea",
+        "prefix": {
+            "string": "+291",
+            "number": 291
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/en-flag.gif",
+        "name": "Estland",
+        "prefix": {
+            "string": "+372",
+            "number": 372
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/wz-flag.gif",
+        "name": "Eswatini",
+        "prefix": {
+            "string": "+268",
+            "number": 268
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/fk-flag.gif",
+        "name": "Falklandinseln",
+        "prefix": {
+            "string": "+500",
+            "number": 500
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/fo-flag.gif",
+        "name": "Färöer",
+        "prefix": {
+            "string": "+298",
+            "number": 298
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/fj-flag.gif",
+        "name": "Fidschi",
+        "prefix": {
+            "string": "+679",
+            "number": 679
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/fi-flag.gif",
+        "name": "Finnland",
+        "prefix": {
+            "string": "+358",
+            "number": 358
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/fr-flag.gif",
+        "name": "Frankreich",
+        "prefix": {
+            "string": "+33",
+            "number": 33
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/fg-flag.gif",
+        "name": "Französisch-Guayana",
+        "prefix": {
+            "string": "+594",
+            "number": 594
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/fp-flag.gif",
+        "name": "Französisch-Polynesien",
+        "prefix": {
+            "string": "+689",
+            "number": 689
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/gb-flag.gif",
+        "name": "Gabun",
+        "prefix": {
+            "string": "+241",
+            "number": 241
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ga-flag.gif",
+        "name": "Gambia",
+        "prefix": {
+            "string": "+220",
+            "number": 220
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/Palaestina.png",
+        "name": "Gazastreifen",
+        "prefix": {
+            "string": "+970",
+            "number": 970
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/gg-flag.gif",
+        "name": "Georgien",
+        "prefix": {
+            "string": "+995",
+            "number": 995
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/gh-flag.gif",
+        "name": "Ghana",
+        "prefix": {
+            "string": "+233",
+            "number": 233
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/gi-flag.gif",
+        "name": "Gibraltar",
+        "prefix": {
+            "string": "+350",
+            "number": 350
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/gj-flag.gif",
+        "name": "Grenada",
+        "prefix": {
+            "string": "+1809",
+            "number": 1809
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/gr-flag.gif",
+        "name": "Griechenland",
+        "prefix": {
+            "string": "+30",
+            "number": 30
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/gl-flag.gif",
+        "name": "Grönland",
+        "prefix": {
+            "string": "+299",
+            "number": 299
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/uk-flag.gif",
+        "name": "Großbritannien",
+        "prefix": {
+            "string": "+44",
+            "number": 44
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/gp-flag.gif",
+        "name": "Guadeloupe",
+        "prefix": {
+            "string": "+590",
+            "number": 590
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/gq-flag.gif",
+        "name": "Guam",
+        "prefix": {
+            "string": "+1671",
+            "number": 1671
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/gt-flag.gif",
+        "name": "Guatemala",
+        "prefix": {
+            "string": "+502",
+            "number": 502
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/gk-flag.gif",
+        "name": "Guernsey",
+        "prefix": {
+            "string": "+441481",
+            "number": 441481
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/gv-flag.gif",
+        "name": "Guinea",
+        "prefix": {
+            "string": "+224",
+            "number": 224
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/pu-flag.gif",
+        "name": "Guinea-Bissau",
+        "prefix": {
+            "string": "+245",
+            "number": 245
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/gy-flag.gif",
+        "name": "Guyana",
+        "prefix": {
+            "string": "+592",
+            "number": 592
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ha-flag.gif",
+        "name": "Haiti",
+        "prefix": {
+            "string": "+509",
+            "number": 509
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ho-flag.gif",
+        "name": "Honduras",
+        "prefix": {
+            "string": "+504",
+            "number": 504
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/hk-flag.gif",
+        "name": "Hongkong",
+        "prefix": {
+            "string": "+852",
+            "number": 852
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/in-flag.gif",
+        "name": "Indien",
+        "prefix": {
+            "string": "+91",
+            "number": 91
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/id-flag.gif",
+        "name": "Indonesien",
+        "prefix": {
+            "string": "+62",
+            "number": 62
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/im-flag.gif",
+        "name": "Insel Man",
+        "prefix": {
+            "string": "+441642",
+            "number": 441642
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/iz-flag.gif",
+        "name": "Irak",
+        "prefix": {
+            "string": "+964",
+            "number": 964
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ir-flag.gif",
+        "name": "Iran",
+        "prefix": {
+            "string": "+98",
+            "number": 98
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ei-flag.gif",
+        "name": "Irland",
+        "prefix": {
+            "string": "+353",
+            "number": 353
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ic-flag.gif",
+        "name": "Island",
+        "prefix": {
+            "string": "+354",
+            "number": 354
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/is-flag.gif",
+        "name": "Israel",
+        "prefix": {
+            "string": "+972",
+            "number": 972
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/it-flag.gif",
+        "name": "Italien",
+        "prefix": {
+            "string": "+39",
+            "number": 39
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/jm-flag.gif",
+        "name": "Jamaika",
+        "prefix": {
+            "string": "+1876",
+            "number": 1876
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ja-flag.gif",
+        "name": "Japan",
+        "prefix": {
+            "string": "+81",
+            "number": 81
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ym-flag.gif",
+        "name": "Jemen",
+        "prefix": {
+            "string": "+967",
+            "number": 967
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/je-flag.gif",
+        "name": "Jersey",
+        "prefix": {
+            "string": "+441534",
+            "number": 441534
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/jo-flag.gif",
+        "name": "Jordanien",
+        "prefix": {
+            "string": "+962",
+            "number": 962
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/cj-flag.gif",
+        "name": "Kaimaninseln",
+        "prefix": {
+            "string": "+1345",
+            "number": 1345
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/cb-flag.gif",
+        "name": "Kambodscha",
+        "prefix": {
+            "string": "+855",
+            "number": 855
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/cm-flag.gif",
+        "name": "Kamerun",
+        "prefix": {
+            "string": "+237",
+            "number": 237
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ca-flag.gif",
+        "name": "Kanada",
+        "prefix": {
+            "string": "+1",
+            "number": 1
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/kz-flag.gif",
+        "name": "Kasachstan",
+        "prefix": {
+            "string": "+7",
+            "number": 7
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/qa-flag.gif",
+        "name": "Katar",
+        "prefix": {
+            "string": "+974",
+            "number": 974
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ke-flag.gif",
+        "name": "Kenia",
+        "prefix": {
+            "string": "+254",
+            "number": 254
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/kg-flag.gif",
+        "name": "Kirgisistan",
+        "prefix": {
+            "string": "+996",
+            "number": 996
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/kr-flag.gif",
+        "name": "Kiribati",
+        "prefix": {
+            "string": "+686",
+            "number": 686
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ck-flag.gif",
+        "name": "Kokosinseln (Keelinginseln)",
+        "prefix": {
+            "string": "+61",
+            "number": 61
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/co-flag.gif",
+        "name": "Kolumbien",
+        "prefix": {
+            "string": "+57",
+            "number": 57
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/cn-flag.gif",
+        "name": "Komoren",
+        "prefix": {
+            "string": "+269",
+            "number": 269
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/cf-flag.gif",
+        "name": "Kongo",
+        "prefix": {
+            "string": "+242",
+            "number": 242
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/cg-flag.gif",
+        "name": "Kongo, Demokratische Republik",
+        "prefix": {
+            "string": "+243",
+            "number": 243
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/kn-flag.gif",
+        "name": "Korea, Demokratische Volksrepublik",
+        "prefix": {
+            "string": "+850",
+            "number": 850
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ks-flag.gif",
+        "name": "Korea, Republik",
+        "prefix": {
+            "string": "+82",
+            "number": 82
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/kv-flag.gif",
+        "name": "Kosovo",
+        "prefix": {
+            "string": "+383",
+            "number": 383
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/hr-flag.gif",
+        "name": "Kroatien",
+        "prefix": {
+            "string": "+385",
+            "number": 385
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/cu-flag.gif",
+        "name": "Kuba",
+        "prefix": {
+            "string": "+53",
+            "number": 53
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ku-flag.gif",
+        "name": "Kuwait",
+        "prefix": {
+            "string": "+965",
+            "number": 965
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/la-flag.gif",
+        "name": "Laos",
+        "prefix": {
+            "string": "+856",
+            "number": 856
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/lt-flag.gif",
+        "name": "Lesotho",
+        "prefix": {
+            "string": "+266",
+            "number": 266
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/lg-flag.gif",
+        "name": "Lettland",
+        "prefix": {
+            "string": "+371",
+            "number": 371
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/le-flag.gif",
+        "name": "Libanon",
+        "prefix": {
+            "string": "+961",
+            "number": 961
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/li-flag.gif",
+        "name": "Liberia",
+        "prefix": {
+            "string": "+231",
+            "number": 231
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ly-flag.gif",
+        "name": "Libyen",
+        "prefix": {
+            "string": "+218",
+            "number": 218
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ls-flag.gif",
+        "name": "Liechtenstein",
+        "prefix": {
+            "string": "+423",
+            "number": 423
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/lh-flag.gif",
+        "name": "Litauen",
+        "prefix": {
+            "string": "+370",
+            "number": 370
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/lu-flag.gif",
+        "name": "Luxemburg",
+        "prefix": {
+            "string": "+352",
+            "number": 352
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/mc-flag.gif",
+        "name": "Macau",
+        "prefix": {
+            "string": "+853",
+            "number": 853
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ma-flag.gif",
+        "name": "Madagaskar",
+        "prefix": {
+            "string": "+261",
+            "number": 261
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/mi-flag.gif",
+        "name": "Malawi",
+        "prefix": {
+            "string": "+265",
+            "number": 265
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/my-flag.gif",
+        "name": "Malaysia",
+        "prefix": {
+            "string": "+60",
+            "number": 60
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/mv-flag.gif",
+        "name": "Malediven",
+        "prefix": {
+            "string": "+960",
+            "number": 960
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ml-flag.gif",
+        "name": "Mali",
+        "prefix": {
+            "string": "+223",
+            "number": 223
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/mt-flag.gif",
+        "name": "Malta",
+        "prefix": {
+            "string": "+356",
+            "number": 356
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/mo-flag.gif",
+        "name": "Marokko",
+        "prefix": {
+            "string": "+212",
+            "number": 212
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/rm-flag.gif",
+        "name": "Marshallinseln",
+        "prefix": {
+            "string": "+692",
+            "number": 692
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/mb-flag.gif",
+        "name": "Martinique",
+        "prefix": {
+            "string": "+596",
+            "number": 596
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/mr-flag.gif",
+        "name": "Mauretanien",
+        "prefix": {
+            "string": "+222",
+            "number": 222
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/mp-flag.gif",
+        "name": "Mauritius",
+        "prefix": {
+            "string": "+230",
+            "number": 230
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/mf-flag.gif",
+        "name": "Mayotte",
+        "prefix": {
+            "string": "+262",
+            "number": 262
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/mx-flag.gif",
+        "name": "Mexiko",
+        "prefix": {
+            "string": "+52",
+            "number": 52
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/mq-flag.gif",
+        "name": "Midway",
+        "prefix": {
+            "string": "+1808",
+            "number": 1808
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/fm-flag.gif",
+        "name": "Mikronesien",
+        "prefix": {
+            "string": "+691",
+            "number": 691
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/md-flag.gif",
+        "name": "Moldau",
+        "prefix": {
+            "string": "+373",
+            "number": 373
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/mn-flag.gif",
+        "name": "Monaco",
+        "prefix": {
+            "string": "+377",
+            "number": 377
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/mg-flag.gif",
+        "name": "Mongolei",
+        "prefix": {
+            "string": "+976",
+            "number": 976
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/mj-flag.gif",
+        "name": "Montenegro",
+        "prefix": {
+            "string": "+382",
+            "number": 382
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/mh-flag.gif",
+        "name": "Montserrat",
+        "prefix": {
+            "string": "+1664",
+            "number": 1664
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/mz-flag.gif",
+        "name": "Mosambik",
+        "prefix": {
+            "string": "+258",
+            "number": 258
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/bm-flag.gif",
+        "name": "Myanmar",
+        "prefix": {
+            "string": "+95",
+            "number": 95
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/wa-flag.gif",
+        "name": "Namibia",
+        "prefix": {
+            "string": "+264",
+            "number": 264
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/nr-flag.gif",
+        "name": "Nauru",
+        "prefix": {
+            "string": "+674",
+            "number": 674
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/np-flag.gif",
+        "name": "Nepal",
+        "prefix": {
+            "string": "+977",
+            "number": 977
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/nc-flag.gif",
+        "name": "Neukaledonien",
+        "prefix": {
+            "string": "+687",
+            "number": 687
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/nz-flag.gif",
+        "name": "Neuseeland",
+        "prefix": {
+            "string": "+64",
+            "number": 64
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/nu-flag.gif",
+        "name": "Nicaragua",
+        "prefix": {
+            "string": "+505",
+            "number": 505
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/nl-flag.gif",
+        "name": "Niederlande",
+        "prefix": {
+            "string": "+31",
+            "number": 31
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ng-flag.gif",
+        "name": "Niger",
+        "prefix": {
+            "string": "+227",
+            "number": 227
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ni-flag.gif",
+        "name": "Nigeria",
+        "prefix": {
+            "string": "+234",
+            "number": 234
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ne-flag.gif",
+        "name": "Niue",
+        "prefix": {
+            "string": "+683",
+            "number": 683
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/cq-flag.gif",
+        "name": "Nördliche Marianen",
+        "prefix": {
+            "string": "+1670",
+            "number": 1670
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/mk-flag.gif",
+        "name": "Nordmazedonien",
+        "prefix": {
+            "string": "+389",
+            "number": 389
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/nordzypern_mini.jpg",
+        "name": "Nordzypern",
+        "prefix": {
+            "string": "+90392",
+            "number": 90392
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/nf-flag.gif",
+        "name": "Norfolkinsel",
+        "prefix": {
+            "string": "+6723",
+            "number": 6723
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/no-flag.gif",
+        "name": "Norwegen",
+        "prefix": {
+            "string": "+47",
+            "number": 47
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/mu-flag.gif",
+        "name": "Oman",
+        "prefix": {
+            "string": "+968",
+            "number": 968
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/au-flag.gif",
+        "name": "Österreich",
+        "prefix": {
+            "string": "+43",
+            "number": 43
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/pk-flag.gif",
+        "name": "Pakistan",
+        "prefix": {
+            "string": "+92",
+            "number": 92
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ps-flag.gif",
+        "name": "Palau",
+        "prefix": {
+            "string": "+680",
+            "number": 680
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/pm-flag.gif",
+        "name": "Panama",
+        "prefix": {
+            "string": "+507",
+            "number": 507
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/pp-flag.gif",
+        "name": "Papua-Neuguinea",
+        "prefix": {
+            "string": "+675",
+            "number": 675
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/pa-flag.gif",
+        "name": "Paraguay",
+        "prefix": {
+            "string": "+595",
+            "number": 595
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/pe-flag.gif",
+        "name": "Peru",
+        "prefix": {
+            "string": "+51",
+            "number": 51
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/rp-flag.gif",
+        "name": "Philippinen",
+        "prefix": {
+            "string": "+63",
+            "number": 63
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/pc-flag.gif",
+        "name": "Pitcairninseln",
+        "prefix": {
+            "string": "+649",
+            "number": 649
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/pl-flag.gif",
+        "name": "Polen",
+        "prefix": {
+            "string": "+48",
+            "number": 48
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/po-flag.gif",
+        "name": "Portugal",
+        "prefix": {
+            "string": "+351",
+            "number": 351
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/rq-flag.gif",
+        "name": "Puerto Rico",
+        "prefix": {
+            "string": "+1787",
+            "number": 1787
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/re-flag.gif",
+        "name": "Réunion",
+        "prefix": {
+            "string": "+262",
+            "number": 262
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/rw-flag.gif",
+        "name": "Ruanda",
+        "prefix": {
+            "string": "+250",
+            "number": 250
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ro-flag.gif",
+        "name": "Rumänien",
+        "prefix": {
+            "string": "+40",
+            "number": 40
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/rs-flag.gif",
+        "name": "Russische Föderation",
+        "prefix": {
+            "string": "+7",
+            "number": 7
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/fr-flag.gif",
+        "name": "Saint-Martin",
+        "prefix": {
+            "string": "+590",
+            "number": 590
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/bp-flag.gif",
+        "name": "Salomonen",
+        "prefix": {
+            "string": "+677",
+            "number": 677
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/za-flag.gif",
+        "name": "Sambia",
+        "prefix": {
+            "string": "+260",
+            "number": 260
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ws-flag.gif",
+        "name": "Samoa",
+        "prefix": {
+            "string": "+685",
+            "number": 685
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/sm-flag.gif",
+        "name": "San Marino",
+        "prefix": {
+            "string": "+378",
+            "number": 378
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/tp-flag.gif",
+        "name": "São Tomé und Príncipe",
+        "prefix": {
+            "string": "+239",
+            "number": 239
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/sa-flag.gif",
+        "name": "Saudi-Arabien",
+        "prefix": {
+            "string": "+966",
+            "number": 966
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/sw-flag.gif",
+        "name": "Schweden",
+        "prefix": {
+            "string": "+46",
+            "number": 46
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/sz-flag.gif",
+        "name": "Schweiz",
+        "prefix": {
+            "string": "+41",
+            "number": 41
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/sg-flag.gif",
+        "name": "Senegal",
+        "prefix": {
+            "string": "+221",
+            "number": 221
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ri-flag.gif",
+        "name": "Serbien",
+        "prefix": {
+            "string": "+381",
+            "number": 381
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/se-flag.gif",
+        "name": "Seychellen",
+        "prefix": {
+            "string": "+248",
+            "number": 248
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/sl-flag.gif",
+        "name": "Sierra Leone",
+        "prefix": {
+            "string": "+232",
+            "number": 232
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/zi-flag.gif",
+        "name": "Simbabwe",
+        "prefix": {
+            "string": "+263",
+            "number": 263
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/sn-flag.gif",
+        "name": "Singapur",
+        "prefix": {
+            "string": "+65",
+            "number": 65
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/Sint_Eustatius.png",
+        "name": "Sint Eustatius",
+        "prefix": {
+            "string": "+599",
+            "number": 599
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/Sint_Maarten.png",
+        "name": "Sint Maarten",
+        "prefix": {
+            "string": "+599,",
+            "number": 599
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/lo-flag.gif",
+        "name": "Slowakei",
+        "prefix": {
+            "string": "+421",
+            "number": 421
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/si-flag.gif",
+        "name": "Slowenien",
+        "prefix": {
+            "string": "+386",
+            "number": 386
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/so-flag.gif",
+        "name": "Somalia",
+        "prefix": {
+            "string": "+252",
+            "number": 252
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/sp-flag.gif",
+        "name": "Spanien",
+        "prefix": {
+            "string": "+34",
+            "number": 34
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ce-flag.gif",
+        "name": "Sri Lanka",
+        "prefix": {
+            "string": "+94",
+            "number": 94
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/fr-flag.gif",
+        "name": "St. Barthélemy",
+        "prefix": {
+            "string": "+590",
+            "number": 590
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/sc-flag.gif",
+        "name": "St. Kitts und Nevis",
+        "prefix": {
+            "string": "+1869",
+            "number": 1869
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/st-flag.gif",
+        "name": "St. Lucia",
+        "prefix": {
+            "string": "+1758",
+            "number": 1758
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/sb-flag.gif",
+        "name": "St. Pierre und Miquelon",
+        "prefix": {
+            "string": "+508",
+            "number": 508
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/vc-flag.gif",
+        "name": "St. Vincent und die Grenadinen",
+        "prefix": {
+            "string": "+1784",
+            "number": 1784
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/sf-flag.gif",
+        "name": "Südafrika",
+        "prefix": {
+            "string": "+27",
+            "number": 27
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/su-flag.gif",
+        "name": "Sudan",
+        "prefix": {
+            "string": "+249",
+            "number": 249
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/od-flag.gif",
+        "name": "Südsudan",
+        "prefix": {
+            "string": "+211",
+            "number": 211
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ns-flag.gif",
+        "name": "Suriname",
+        "prefix": {
+            "string": "+597",
+            "number": 597
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/sy-flag.gif",
+        "name": "Syrien",
+        "prefix": {
+            "string": "+963",
+            "number": 963
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ti-flag.gif",
+        "name": "Tadschikistan",
+        "prefix": {
+            "string": "+992",
+            "number": 992
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/tw-flag.gif",
+        "name": "Taiwan",
+        "prefix": {
+            "string": "+886",
+            "number": 886
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/tz-flag.gif",
+        "name": "Tansania",
+        "prefix": {
+            "string": "+255",
+            "number": 255
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/th-flag.gif",
+        "name": "Thailand",
+        "prefix": {
+            "string": "+66",
+            "number": 66
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/tt-flag.gif",
+        "name": "Timor-Leste",
+        "prefix": {
+            "string": "+670",
+            "number": 670
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/to-flag.gif",
+        "name": "Togo",
+        "prefix": {
+            "string": "+228",
+            "number": 228
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/tl-flag.gif",
+        "name": "Tokelau",
+        "prefix": {
+            "string": "+690",
+            "number": 690
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/tn-flag.gif",
+        "name": "Tonga",
+        "prefix": {
+            "string": "+676",
+            "number": 676
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/td-flag.gif",
+        "name": "Trinidad und Tobago",
+        "prefix": {
+            "string": "+1868",
+            "number": 1868
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/cd-flag.gif",
+        "name": "Tschad",
+        "prefix": {
+            "string": "+235",
+            "number": 235
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ez-flag.gif",
+        "name": "Tschechische Republik",
+        "prefix": {
+            "string": "+420",
+            "number": 420
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ts-flag.gif",
+        "name": "Tunesien",
+        "prefix": {
+            "string": "+216",
+            "number": 216
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/tu-flag.gif",
+        "name": "Türkei",
+        "prefix": {
+            "string": "+90",
+            "number": 90
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/tx-flag.gif",
+        "name": "Turkmenistan",
+        "prefix": {
+            "string": "+993",
+            "number": 993
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/tk-flag.gif",
+        "name": "Turks- und Caicosinseln",
+        "prefix": {
+            "string": "+1649",
+            "number": 1649
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/tv-flag.gif",
+        "name": "Tuvalu",
+        "prefix": {
+            "string": "+688",
+            "number": 688
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ug-flag.gif",
+        "name": "Uganda",
+        "prefix": {
+            "string": "+256",
+            "number": 256
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/up-flag.gif",
+        "name": "Ukraine",
+        "prefix": {
+            "string": "+380",
+            "number": 380
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/hu-flag.gif",
+        "name": "Ungarn",
+        "prefix": {
+            "string": "+36",
+            "number": 36
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/uy-flag.gif",
+        "name": "Uruguay",
+        "prefix": {
+            "string": "+598",
+            "number": 598
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/uz-flag.gif",
+        "name": "Usbekistan",
+        "prefix": {
+            "string": "+998",
+            "number": 998
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/nh-flag.gif",
+        "name": "Vanuatu",
+        "prefix": {
+            "string": "+678",
+            "number": 678
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/vt-flag.gif",
+        "name": "Vatikanstadt",
+        "prefix": {
+            "string": "+3906,",
+            "number": 3906
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ve-flag.gif",
+        "name": "Venezuela",
+        "prefix": {
+            "string": "+58",
+            "number": 58
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ae-flag.gif",
+        "name": "Vereinigte Arabische Emirate",
+        "prefix": {
+            "string": "+971",
+            "number": 971
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/us-flag.gif",
+        "name": "Vereinigte Staaten",
+        "prefix": {
+            "string": "+1",
+            "number": 1
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/vm-flag.gif",
+        "name": "Vietnam",
+        "prefix": {
+            "string": "+84",
+            "number": 84
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/wf-flag.gif",
+        "name": "Wallis und Futuna",
+        "prefix": {
+            "string": "+681",
+            "number": 681
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/kt-flag.gif",
+        "name": "Weihnachtsinsel",
+        "prefix": {
+            "string": "+61",
+            "number": 61
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/Palaestina.png",
+        "name": "Westjordanland",
+        "prefix": {
+            "string": "+970",
+            "number": 970
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/ct-flag.gif",
+        "name": "Zentralafrikanische Republik",
+        "prefix": {
+            "string": "+236",
+            "number": 236
+        }
+    },
+    {
+        "img": "https://www.lexasdata.com/mf/cy-flag.gif",
+        "name": "Zypern",
+        "prefix": {
+            "string": "+357",
+            "number": 357
+        }
+    }
+]

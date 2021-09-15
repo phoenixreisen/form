@@ -1,43 +1,11 @@
-import {ValidationTypes, DateConfig, ValidationRules} from './config';
+import { DateField, DateFieldFactory, Field, FieldFactory, Hook, Iban, PhoneField } from './types';
+import { ValidationTypes, DateConfig, ValidationRules } from './config';
+import { hasValidPhoneNrPrefix } from './functions';
 import isEmail from 'validator/lib/isEmail';
 import isInt from 'validator/lib/isInt';
 import datetime from 'date-and-time';
 import stream from 'mithril/stream';
 import isIban from 'iban';
-
-//--- Types -----
-
-declare type AbstractField<T> = {
-    value: stream<T>,
-    mirror?: Field<T>,
-    required: boolean,
-    rules?: {[key: string]: RegExp},
-    complaint: boolean | ValidationTypes,
-}
-
-export declare type Langs = Array<string>;
-export declare type Daterange = Array<Date>;
-
-export declare type Field<T> = AbstractField<T> & {
-    validate: (value: T, exp?: RegExp) => void,
-    [key: string]: any,
-};
-
-export declare type Iban = AbstractField<string> & {
-    format: (e: HTMLInputElement) => void
-    validate: (value: string) => void,
-};
-
-export declare type DateField = AbstractField<string> & {
-    getDate(): Date | number | null
-    validate: (input: string, range?: Daterange) => void
-};
-
-export declare type Hook = (input: any, field: Field<any>) => string|void;
-export declare type DateFieldHook = (input: any, datelang?: string, daterange?: Daterange, field?: DateField) => string|void;
-
-export declare type FieldFactory = (required?: boolean, hook?: Hook, rule?: RegExp) => Field<any>;
-export declare type DateFieldFactory = (required?: boolean, langs?: Langs, daterange?: Array<Date>, hook?: DateFieldHook) => DateField;
 
 //--- Helper -----
 
@@ -203,10 +171,11 @@ export const gender: FieldFactory = (required = true, hook) => {
 };
 
 export const phone: FieldFactory = (required = true, hook = undefined, rule = ValidationRules.complete) => {
-    const phone: Field<string> = {
+    const phone: PhoneField = {
         value: stream(''),
         complaint: false,
         required: required,
+        hasValidPrefix: hasValidPhoneNrPrefix,
         validate: (input = '', exp = rule) => {
             // wenn es nicht der Regel entspricht, verwerfe es.
             if(!input.trim() || input.match(exp)) {

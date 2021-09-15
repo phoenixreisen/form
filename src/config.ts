@@ -47,4 +47,6 @@ export const ValidationRules = {
     complete: /^[0-9 /+-]+$/,
     arealess: /^[1-9 -]+$/,
     area: /^\+[0-9-]{2,7}$/,
+    strict:  /^[0-9+]+$/,
+    numbers: /^[0-9]+$/
 };

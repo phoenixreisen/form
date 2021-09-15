@@ -6,7 +6,8 @@
   "types": "dist/form.d.ts",
   "module": "src/form.ts",
   "scripts": {
-    "compile": "npx tsc --build tsconfig.json",
+    "copy-prefixes": "cp ./src/prefixes.json ./dist/prefixes.json",
+    "compile": "npx tsc --build tsconfig.json && npm run copy-prefixes",
     "pretest": "rm -rf ./dist && npm run compile",
     "prepublish": "npm test",
     "test": "jasmine"

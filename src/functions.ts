@@ -1,4 +1,4 @@
-import {DateField, Field} from './fields'
+import {DateField, Field, PhonePrefix} from './types'
 
 //--- Funktionen -----
 
@@ -28,6 +28,28 @@ export function isValidInput(fields: {[name: string]: Field<any>|DateField}): bo
           : hasErrors;
     }
     return !hasErrors;
+}
+
+/**
+ * Prüft, ob der übergebene String eine gültige Ländervorwahl enthält.
+ * Liste von Vorwahlen in (extra zu importierenden) "prefixes.json" hinterlegt.
+ */
+export function hasValidPhoneNrPrefix(phonenr: string, prefixes: Array<PhonePrefix>): boolean {
+  if(phonenr?.length) {
+      if(phonenr.substring(0, 1) !== '+') {
+          return false;
+      }
+      for(const current of prefixes) {
+          const length = current.prefix.string.length;
+          const substr = phonenr.slice(0, length);
+          const afterSub = phonenr.slice(length, (length+1));
+          if(substr === current.prefix.string && afterSub !== '0') {
+              return true;
+          }
+      }
+      return false;
+  }
+  return true;
 }
 
 /**

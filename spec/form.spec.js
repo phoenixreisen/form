@@ -1,4 +1,6 @@
-const {ValidationRules} = require('../dist/config.js');
+const { hasValidPhoneNrPrefix } = require('../dist/functions.js');
+const { ValidationRules } = require('../dist/config.js');
+const prefixes = require('../src/prefixes.json');
 const datetime = require('date-and-time');
 const form = require('../dist/form.js');
 const jsdom = require('jsdom');
@@ -277,6 +279,36 @@ describe("form handler - field check", () => {
         field3.validate('+49-123');
         expect(field3.value()).toBe('+49-123');
         expect(field3.complaint).toBe(false);
+    });
+
+    it('should find & validate phone prefixes correctly', () => {
+        const { phone } = form;
+        let field = phone(true);
+
+        field.validate('+4912345');
+        expect(field.value()).toBe('+4912345');
+        expect(field.hasValidPrefix(field.value(), prefixes)).toBe(true);
+        expect(hasValidPhoneNrPrefix(field.value(), prefixes)).toBe(true);
+
+        field.validate('+12345');
+        expect(field.value()).toBe('+12345');
+        expect(field.hasValidPrefix(field.value(), prefixes)).toBe(true);
+        expect(hasValidPhoneNrPrefix(field.value(), prefixes)).toBe(true);
+
+        field.validate('+49012345');
+        expect(field.value()).toBe('+49012345');
+        expect(field.hasValidPrefix(field.value(), prefixes)).toBe(false);
+        expect(hasValidPhoneNrPrefix(field.value(), prefixes)).toBe(false);
+
+        field.validate('+42212345');
+        expect(field.value()).toBe('+42212345');
+        expect(field.hasValidPrefix(field.value(), prefixes)).toBe(false);
+        expect(hasValidPhoneNrPrefix(field.value(), prefixes)).toBe(false);
+
+        field.validate('016312345');
+        expect(field.value()).toBe('016312345');
+        expect(field.hasValidPrefix(field.value(), prefixes)).toBe(false);
+        expect(hasValidPhoneNrPrefix(field.value(), prefixes)).toBe(false);
     });
 
     it('should handle & validate emails correctly', () => {
