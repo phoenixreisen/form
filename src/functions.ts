@@ -1,4 +1,4 @@
-import {DateField, Field, PhonePrefix} from './types'
+import {DateField, Field, Hook, PhonePrefix} from './types'
 
 //--- Funktionen -----
 
@@ -62,4 +62,15 @@ export function isDateSupported(): boolean {
     input.setAttribute('type', 'date');
     input.setAttribute('value', value);
     return (input.value !== value);
+}
+
+/**
+ * Ruft die Hook-Funktion eines Feldes auf,
+ * sofern eine übergeben wurde.
+ */
+export function callHook(input: any, field: Field<any>, hook?: Hook): any {
+    const hooked = (hook && hook(input, field));
+    return (hooked !== null && hooked !== undefined)
+        ? hooked
+        : input;
 }

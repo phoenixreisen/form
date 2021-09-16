@@ -1,20 +1,11 @@
-import { DateField, DateFieldFactory, Field, FieldFactory, Hook, Iban, PhoneField } from './types';
+import { DateField, DateFieldFactory, Field, FieldFactory, Iban, PhoneField } from './types';
 import { ValidationTypes, DateConfig, ValidationRules } from './config';
-import { hasValidPhoneNrPrefix } from './functions';
+import { callHook, hasValidPhoneNrPrefix } from './functions';
 import isEmail from 'validator/lib/isEmail';
 import isInt from 'validator/lib/isInt';
 import datetime from 'date-and-time';
 import stream from 'mithril/stream';
 import isIban from 'iban';
-
-//--- Helper -----
-
-const callHook = (input: any, field: Field<any>, hook?: Hook): any => {
-    const hooked = (hook && hook(input, field));
-    return (hooked !== null && hooked !== undefined)
-        ? hooked
-        : input;
-}
 
 //--- Felder -----
 
