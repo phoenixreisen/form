@@ -23,7 +23,7 @@ export declare type Daterange = Array<Date>;
 
 export declare type Field<T> = AbstractField<T> & {
     validate: (value: T, exp?: RegExp) => void,
-    [key: string]: unknown,
+    [key: string]: any,
 };
 
 export declare type Iban = AbstractField<string> & {
