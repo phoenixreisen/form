@@ -269,7 +269,7 @@ export const iban: FieldFactory = (required = true, hook) => {
             const target = e?.target || e;
             const length = target.value.length;
             let position = target.selectionEnd;
-            target.value = isIban.printFormat(target.value);
+            target.value = isIban.printFormat(target.value, ' ');
             target.selectionEnd = position += ((
                 target.value.charAt(position - 1) === ' '
                 && target.value.charAt(length - 1) === ' '
