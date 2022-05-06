@@ -431,6 +431,7 @@ describe("form handler - field check", () => {
         let rangeField = date(required, ['de'], [new Date(), addDays(new Date, 5)]);
         let field = date(required, ['de', 'en']);
         let field2 = date(!required, ['de']);
+        let field3 = date(required, ['de2']);
 
         field.validate('');
         field2.validate('');
@@ -450,6 +451,10 @@ describe("form handler - field check", () => {
             expect(field.value()).toBe(value);
             expect(field.complaint).toBeFalsy();
         }
+
+        field3.validate('06.05.22');
+        expect(field3.value()).toBe('06.05.22');
+        expect(field3.complaint).toBe(ValidationTypes.invalid);
 
         // --- Prüfung Range
         const inRange = format(addDays(new Date(), 2), 'DD.MM.YYYY');

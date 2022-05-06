@@ -11,8 +11,9 @@ export declare interface DateConfig {
 
 export const DateConfig: DateConfig = {
     patterns: {
-        de: 'DD.MM.YYYY',
         en: 'YYYY-MM-DD',
+        de: 'DD.MM.YYYY',
+        de2: 'DD.MM.YY',
     },
     i18n: {
         de: {
