@@ -1,11 +1,15 @@
 import { DateField, DateFieldFactory, Field, FieldFactory, Iban, PhoneField } from './types';
 import { ValidationTypes, DateConfig, ValidationRules } from './config';
+import twoDigitYear  from 'date-and-time/plugin/two-digit-year';
 import { callHook, hasValidPhoneNrPrefix } from './functions';
 import isEmail from 'validator/lib/isEmail';
 import isInt from 'validator/lib/isInt';
 import datetime from 'date-and-time';
 import stream from 'mithril/stream';
 import isIban from 'iban';
+
+//--- Plugins -----
+datetime.plugin(twoDigitYear);
 
 //--- Felder -----
 
